@@ -7,26 +7,48 @@ public class Amogus {
     static String horiLines = "____________________________________________________________\n";
     static String intro = "Hello! I'm " + Amogus.name + "!\nWhat can I do for you?\n";
     static String outro = "Bye. Hope to see you again soon!\n";
-    static final String defaultMsg = horiLines + intro + horiLines;
+    static final String welcome = horiLines + intro + horiLines;
+    static final String end = horiLines + outro + horiLines;
+
+    static String[] list = new String[100];
 
     /**
      * Sends out a welcome message before waiting for the users
-     * input to echo, unless the input is bye which ends the conversation.
+     * input to either add to a list, list the list, or end
+     * the conversation
      */
-    public static void Echo() {
-        System.out.println(defaultMsg);
+    public static void Chat() {
+        System.out.println(welcome);
 
         Scanner scanner = new Scanner(System.in);
         String input = scanner.nextLine();
-        while (!Objects.equals(input, "bye")) {
-            System.out.println(horiLines + input + "\n" + horiLines);
+        int idx = 0;
+        while (true) {
+            if (Objects.equals(input, "bye")) {
+                System.out.println(end);
+                break;
+            } else if (Objects.equals(input, "list")) {
+                if (list[0] == null) {
+                    System.out.println(horiLines + "Empty List." + "\n" + horiLines);
+                } else {
+                    String msg = "";
+                    for (int i = 0; i < idx; i++) {
+                        int j = i + 1;
+                        msg += j + ". " + list[i] + "\n";
+                    }
+                    System.out.println(horiLines + msg + horiLines);
+                }
+            } else {
+                list[idx] = input;
+                System.out.println(horiLines + "added: " + input + "\n" + horiLines);
+                idx++;
+            }
+
             input = scanner.nextLine();
         }
-
-        System.out.println(horiLines + outro + horiLines);
     }
 
     public static void main(String[] args) {
-        Echo();
+        Chat();
     }
 }

@@ -15,7 +15,7 @@ public class Amogus {
     /**
      * Sends out a welcome message before waiting for the users
      * input for various modes of activity, either listing, marking,
-     * or unmarking tasks.
+     * or unmarking different types of tasks.
      */
     public static void Chat() {
         System.out.println(welcome);

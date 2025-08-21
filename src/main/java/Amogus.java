@@ -31,7 +31,7 @@ public class Amogus {
                 if (list[0] == null) {
                     System.out.println(horiLines + "Empty List." + "\n" + horiLines);
                 } else {
-                    String msg = "";
+                    String msg = "Here are the tasks in your list:\n";
                     for (int i = 0; i < idx; i++) {
                         int j = i + 1;
                         msg += j + "." + list[i].fullDesc() + "\n";
@@ -49,8 +49,22 @@ public class Amogus {
                 String msg = horiLines + "OK, I've marked this task as not done yet:\n" + "  " + list[idxMark - 1].fullDesc() + "\n" + horiLines;
                 System.out.println(msg);
             } else {
-                list[idx] = new Task(input);
-                System.out.println(horiLines + "added: " + input + "\n" + horiLines);
+                String desc = scanner.nextLine();
+                if (Objects.equals(input, "todo")) {
+                    list[idx] = new ToDo(desc.trim());
+                } else if (Objects.equals(input, "deadline")) {
+                    String[] parts = desc.split("/by");
+                    String descr = parts[0].trim();
+                    String by = parts[1].trim();
+                    list[idx] = new Deadlines(descr, by);
+                } else if (Objects.equals(input, "event")) {
+                    String[] parts = desc.split("/from|/to");
+                    String descr = parts[0].trim();
+                    String start = parts[1].trim();
+                    String end   = parts[2].trim();
+                    list[idx] = new Event(descr, start, end);
+                }
+                System.out.println(horiLines + "Got it. I've added this task: \n  " + list[idx].fullDesc() + "\nNow you have " + (idx+1) + " tasks in the list.\n" + horiLines);
                 idx++;
             }
 

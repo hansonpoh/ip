@@ -1,5 +1,5 @@
 public class Event extends Task {
-    protected String type = "[E]";
+    protected String type = "E | ";
     protected String start;
     protected String end;
 
@@ -15,5 +15,13 @@ public class Event extends Task {
     @Override
     public String fullDesc() {
         return type + super.fullDesc() + " (from: " + start + " to: " + end + ")";
+    }
+
+    public String start() {
+        return this.start;
+    }
+
+    public String end() {
+        return this.end;
     }
 }

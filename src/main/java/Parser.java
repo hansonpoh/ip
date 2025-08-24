@@ -1,4 +1,33 @@
-package PACKAGE_NAME;
-
 public class Parser {
+
+    public static Command parse(String input) throws AmogusException {
+        String[] parts = input.split(" ", 2);
+        String commandWord = parts[0];
+        String args = parts.length > 1 ? parts[1] : "";
+
+        switch (commandWord.toLowerCase()) {
+            case "list":
+                return new ListCommand();
+            case "mark":
+                int markIndex = Integer.parseInt(args) - 1;
+                return new MarkCommand(markIndex);
+            case "unmark":
+                int unmarkIndex = Integer.parseInt(args) - 1;
+                return new UnmarkCommand(unmarkIndex);
+            case "delete":
+                int delIndex = Integer.parseInt(args) - 1;
+                return new DeleteCommand(delIndex);
+            case "todo":
+                return new AddToDoCommand(args);
+            case "deadline":
+                return new AddDeadlineCommand(args);
+            case "event":
+                return new AddEventCommand(args);
+            case "bye":
+                return new ExitCommand();
+            default:
+                throw new AmogusException("Unknown command: " + commandWord);
+        }
+    }
+
 }

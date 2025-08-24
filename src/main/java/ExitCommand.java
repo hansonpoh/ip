@@ -1,4 +1,12 @@
-package PACKAGE_NAME;
+public class ExitCommand implements Command {
 
-public class ExitCommand {
+    @Override
+    public void execute(TaskList tasks, UI ui, FileStorage f) {
+        ui.exit();
+    }
+
+    @Override
+    public boolean isExit() {
+        return true;
+    }
 }

@@ -8,11 +8,11 @@ public class Task {
     }
 
     public String getStatusIcon() {
-        return (isDone ? "X" : " "); // mark done task with X
+        return (isDone ? "1" : "0"); // mark done task with X
     }
 
     public String fullDesc() {
-        return "[" + this.getStatusIcon() + "] " + this.description;
+        return this.getStatusIcon() + " | " + this.description;
     }
 
     public void mark() {
@@ -21,5 +21,9 @@ public class Task {
 
     public void unmark() {
         this.isDone = false;
+    }
+
+    public boolean isDone() {
+        return this.isDone;
     }
 }

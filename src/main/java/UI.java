@@ -14,6 +14,12 @@ public class UI {
         return horiLines + msg + horiLines;
     }
 
+    /**
+     * Iterates through the list of tasks, then prints them out
+     * in the appropriate format
+     *
+     * @param tasks
+     */
     public void showTaskList(TaskList tasks) {
         String msg = "Here are the tasks in your list:\n";
         for (int i = 0; i < tasks.size(); i++) {

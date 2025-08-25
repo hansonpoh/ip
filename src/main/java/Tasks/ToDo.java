@@ -19,6 +19,10 @@ public class ToDo extends Task {
         }
     }
 
+    /**
+     *
+     * @return string representation of ToDo task
+     */
     @Override
     public String toString() {
         String type = "T | ";

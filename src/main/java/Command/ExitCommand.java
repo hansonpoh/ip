@@ -18,6 +18,10 @@ public class ExitCommand implements Command {
         ui.exit();
     }
 
+    /**
+     * For the program to know when to exit the conversation with user.
+     * @return boolean
+     */
     @Override
     public boolean isExit() {
         return true;

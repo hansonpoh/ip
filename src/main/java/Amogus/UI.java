@@ -43,10 +43,16 @@ public class UI {
         return s.nextLine();
     }
 
+    /**
+     * Prints welcome message.
+     */
     public void welcome() {
         System.out.println(format(intro));
     }
 
+    /**
+     * Prints exit message.
+     */
     public void exit() {
         System.out.println(format(outro));
     }

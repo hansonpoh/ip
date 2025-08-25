@@ -1,14 +1,22 @@
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Objects;
 
 public class Deadlines extends Task {
     private String type = "D | ";
     private String by;
     private LocalDateTime byDate;
 
+    /**
+     * Creates the Deadlines object.
+     *
+     * @param description description of Deadlines task
+     * @param by deadline
+     * @throws AmogusException insufficient information to create deadlines
+     */
     public Deadlines(String description, String by) throws AmogusException {
         super(description);
-        if (description == "" || by == "") {
+        if (Objects.equals(description, "") || Objects.equals(by, "")) {
             throw new AmogusException("Oh no! Please provide full information regarding your deadline!");
         }
         this.by = by;
@@ -17,8 +25,8 @@ public class Deadlines extends Task {
     }
 
     @Override
-    public String fullDesc() {
-        return type + super.fullDesc() + " (by: " + byDate.toString() + ")";
+    public String toString() {
+        return type + super.toString() + " (by: " + byDate.toString() + ")";
     }
 
     public String by() {

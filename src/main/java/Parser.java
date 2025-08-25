@@ -1,12 +1,12 @@
 public class Parser {
 
     /**
-     * Takes in user input to be parsed into relevant sub-classes
+     * Takes in user input to be parsed into relevant subclasses
      * of Command to be further executed in their own classes.
-     *git
-     * @param input
+     *
+     * @param input user input
      * @return Correct sub-Command class to be executed
-     * @throws AmogusException
+     * @throws AmogusException unknown command
      */
     public static Command parse(String input) throws AmogusException {
         String[] parts = input.split(" ", 2);

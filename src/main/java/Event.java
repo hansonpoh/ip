@@ -1,5 +1,6 @@
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Objects;
 
 public class Event extends Task {
     private String type = "E | ";
@@ -9,9 +10,17 @@ public class Event extends Task {
     private LocalDateTime endDate;
 
 
+    /**
+     * Creates the Event object.
+     *
+     * @param description description of Event task
+     * @param start start date
+     * @param end end date
+     * @throws AmogusException insufficient information to create Event task
+     */
     public Event(String description, String start, String end) throws AmogusException {
         super(description);
-        if (description == "" || start == "" || end == "") {
+        if (Objects.equals(description, "") || Objects.equals(start, "") || Objects.equals(end, "")) {
             throw new AmogusException("Oh no! Please provide full information regarding your event!");
         }
         this.start = start;
@@ -22,8 +31,8 @@ public class Event extends Task {
     }
 
     @Override
-    public String fullDesc() {
-        return type + super.fullDesc() + " (from: " + startDate.toString() + " to: " + endDate.toString() + ")";
+    public String toString() {
+        return type + super.toString() + " (from: " + startDate.toString() + " to: " + endDate.toString() + ")";
     }
 
     public String start() {

@@ -11,17 +11,32 @@ public class FileStorage {
         this.path = path;
     }
 
+    /**
+     * Takes in local memory TaskList to write onto a txt file
+     * as a hard disk memory for future use as the program restarts
+     * on a fresh new call without any local memory.
+     *
+     * @param tasks list of tasks
+     */
     public void saveTasks(TaskList tasks) {
         try (FileWriter fw = new FileWriter(path)) {
             for (int i = 0; i < tasks.size(); i++) {
                 Task task = tasks.get(i);
-                fw.write(task.fullDesc() + "\n");
+                fw.write(task.toString() + "\n");
             }
         } catch (IOException e) {
             System.out.println("Error saving tasks: " + e.getMessage());
         }
     }
 
+    /**
+     * Reads from hard disk memory stored txt file onto local memory
+     * to be displayed when list command is called.
+     *
+     * @return TaskList with correctly loaded tasks from txt file
+     * @throws AmogusException improper date/time format
+     * @throws IOException
+     */
     public TaskList loadTasks() throws AmogusException, IOException {
         TaskList tasks = new TaskList();
         File f = new File(path);
@@ -42,6 +57,15 @@ public class FileStorage {
         return tasks;
     }
 
+    /**
+     * When reading the tasks from txt file, parses the task
+     * into its appropriate subclasses to be stored onto the
+     * local memory.
+     *
+     * @param line current line in the txt file
+     * @return a Task from txt file
+     * @throws AmogusException improper date/time format
+     */
     private Task parseTask(String line) throws AmogusException {
         String[] parts = line.split("\\|");
         for (int i = 0; i < parts.length; i++) {

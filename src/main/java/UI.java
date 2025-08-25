@@ -18,7 +18,7 @@ public class UI {
      * Iterates through the list of tasks, then prints them out
      * in the appropriate format
      *
-     * @param tasks
+     * @param tasks list of tasks
      */
     public void showTaskList(TaskList tasks) {
         String msg = "Here are the tasks in your list:\n";
@@ -29,6 +29,11 @@ public class UI {
         System.out.println(format(msg));
     }
 
+    /**
+     * Takes in user input for command
+     *
+     * @return full line of user input to be parsed
+     */
     public String readCommand() {
         Scanner s = new Scanner(System.in);
         return s.nextLine();

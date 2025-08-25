@@ -1,10 +1,10 @@
-package Command;
+package command;
 
-import Amogus.AmogusException;
-import Amogus.FileStorage;
-import Amogus.UI;
-import Tasks.TaskList;
-import Tasks.ToDo;
+import amogus.AmogusException;
+import amogus.FileStorage;
+import amogus.UI;
+import tasks.TaskList;
+import tasks.ToDo;
 
 public class AddToDoCommand implements Command {
 

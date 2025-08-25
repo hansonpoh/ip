@@ -1,8 +1,8 @@
-package Command;
+package command;
 
-import Amogus.FileStorage;
-import Amogus.UI;
-import Tasks.TaskList;
+import amogus.FileStorage;
+import amogus.UI;
+import tasks.TaskList;
 
 public class MarkCommand implements Command {
 

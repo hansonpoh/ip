@@ -1,12 +1,13 @@
-package Tasks;
+package tasks;
 
-import Amogus.AmogusException;
+import amogus.AmogusException;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 
 public class Deadlines extends Task {
+
     private final String by;
     private final LocalDateTime byDate;
 

@@ -1,21 +1,21 @@
-package Amogus;
+package amogus;
 
-import Tasks.TaskList;
+import tasks.TaskList;
 
 import java.util.Scanner;
 
 public class UI {
 
-    static String horiLines = "____________________________________________________________\n";
-    static String intro = "Hello! I'm " + Amogus.name + "!\nWhat can I do for you?\n";
-    static String outro = "Bye. Hope to see you again soon!\n";
+    static String HORILINES = "____________________________________________________________\n";
+    static String INTRO = "Hello! I'm " + Amogus.NAME + "!\nWhat can I do for you?\n";
+    static String OUTRO = "Bye. Hope to see you again soon!\n";
 
     public void showMsg(String msg) {
         System.out.println(msg);
     }
 
     public String format(String msg) {
-        return horiLines + msg + horiLines;
+        return HORILINES + msg + HORILINES;
     }
 
     /**
@@ -47,13 +47,13 @@ public class UI {
      * Prints welcome message.
      */
     public void welcome() {
-        System.out.println(format(intro));
+        System.out.println(format(INTRO));
     }
 
     /**
      * Prints exit message.
      */
     public void exit() {
-        System.out.println(format(outro));
+        System.out.println(format(OUTRO));
     }
 }

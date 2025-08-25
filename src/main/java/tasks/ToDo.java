@@ -1,6 +1,6 @@
-package Tasks;
+package tasks;
 
-import Amogus.AmogusException;
+import amogus.AmogusException;
 
 import java.util.Objects;
 

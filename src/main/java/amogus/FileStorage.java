@@ -1,6 +1,10 @@
-package Amogus;
+package amogus;
 
-import Tasks.*;
+import tasks.Task;
+import tasks.TaskList;
+import tasks.ToDo;
+import tasks.Deadlines;
+import tasks.Event;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -9,10 +13,10 @@ import java.util.Scanner;
 
 public class FileStorage {
 
-    private final String path;
+    private final String PATH;
 
     public FileStorage(String path) {
-        this.path = path;
+        this.PATH = path;
     }
 
     /**
@@ -23,7 +27,7 @@ public class FileStorage {
      * @param tasks list of tasks
      */
     public void saveTasks(TaskList tasks) {
-        try (FileWriter fw = new FileWriter(path)) {
+        try (FileWriter fw = new FileWriter(PATH)) {
             for (int i = 0; i < tasks.size(); i++) {
                 Task task = tasks.get(i);
                 fw.write(task.toString() + "\n");
@@ -43,7 +47,7 @@ public class FileStorage {
      */
     public TaskList loadTasks() throws AmogusException, IOException {
         TaskList tasks = new TaskList();
-        File f = new File(path);
+        File f = new File(PATH);
 
         if (!f.exists()) {
             f.createNewFile();

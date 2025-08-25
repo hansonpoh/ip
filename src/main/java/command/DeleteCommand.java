@@ -1,19 +1,19 @@
-package Command;
+package command;
 
-import Amogus.FileStorage;
-import Amogus.UI;
-import Tasks.TaskList;
+import amogus.FileStorage;
+import amogus.UI;
+import tasks.TaskList;
 
-public class UnmarkCommand implements Command {
+public class DeleteCommand implements Command {
 
     private int idx;
 
-    public UnmarkCommand(int idx) {
+    public DeleteCommand(int idx) {
         this.idx = idx;
     }
 
     /**
-     * Marks the task as not done.
+     * Removes the specified task using its index.
      *
      * @param tasks List of tasks
      * @param ui any display back to the user
@@ -21,8 +21,8 @@ public class UnmarkCommand implements Command {
      */
     @Override
     public void execute(TaskList tasks, UI ui, FileStorage f) {
-        tasks.unmark(idx);
-        ui.showMsg(ui.format("OK, I've marked this task as not done yet:\n  " + tasks.taskDesc(idx) + "\n"));
+        ui.showMsg(ui.format("Noted. I've removed this task:\n  " + tasks.taskDesc(idx) + "\n"));
+        tasks.delete(idx);
         f.saveTasks(tasks);
     }
 

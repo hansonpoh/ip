@@ -33,17 +33,14 @@ public class Event extends Task {
         this.endDate = LocalDateTime.parse(end, formatter);
     }
 
+    /**
+     *
+     * @return string representation of Event task
+     */
     @Override
     public String toString() {
         String type = "E | ";
         return type + super.toString() + " (from: " + startDate.toString() + " to: " + endDate.toString() + ")";
     }
 
-    public String start() {
-        return this.start;
-    }
-
-    public String end() {
-        return this.end;
-    }
 }

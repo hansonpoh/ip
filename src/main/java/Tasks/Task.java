@@ -19,14 +19,24 @@ public class Task {
         return (isDone ? "1" : "0");
     }
 
+    /**
+     *
+     * @return string representation of Task
+     */
     public String toString() {
         return this.getStatusIcon() + " | " + this.description;
     }
 
+    /**
+     * Mark task as complete.
+     */
     public void mark() {
         this.isDone = true;
     }
 
+    /**
+     * Mark task as incomplete.
+     */
     public void unmark() {
         this.isDone = false;
     }

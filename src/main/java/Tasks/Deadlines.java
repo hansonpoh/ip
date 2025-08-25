@@ -27,6 +27,10 @@ public class Deadlines extends Task {
         this.byDate = LocalDateTime.parse(by, formatter);
     }
 
+    /**
+     *
+     * @return String representation of Deadline task
+     */
     @Override
     public String toString() {
         String type = "D | ";

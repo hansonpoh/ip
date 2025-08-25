@@ -6,6 +6,14 @@ public class AddDeadlineCommand implements Command {
         this.desc = desc;
     }
 
+    /**
+     * Creates the Deadlines object to be added into the list of tasks.
+     *
+     * @param tasks List of tasks
+     * @param ui any display back to the user
+     * @param f existing txt file
+     * @throws AmogusException insufficient information to create the task
+     */
     @Override
     public void execute(TaskList tasks, UI ui, FileStorage f) throws AmogusException {
         String[] parts = desc.split("/by");
@@ -14,7 +22,7 @@ public class AddDeadlineCommand implements Command {
         Deadlines deadlines = new Deadlines(descr, by);
 
         tasks.add(deadlines);
-        ui.showMsg(ui.format("Got it. I've added this task:\n  " + deadlines.fullDesc() + "\nNow you have " + tasks.size() + " tasks in the list.\n"));
+        ui.showMsg(ui.format("Got it. I've added this task:\n  " + deadlines.toString() + "\nNow you have " + tasks.size() + " tasks in the list.\n"));
         f.saveTasks(tasks);
     }
 

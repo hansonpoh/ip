@@ -7,11 +7,17 @@ public class Task {
         this.isDone = false;
     }
 
+    /**
+     * Checks the isDone attribute of the object to check status
+     * of the object
+     *
+     * @return 1 or 0 depending on whether the task has been completed
+     */
     public String getStatusIcon() {
-        return (isDone ? "1" : "0"); // mark done task with X
+        return (isDone ? "1" : "0");
     }
 
-    public String fullDesc() {
+    public String toString() {
         return this.getStatusIcon() + " | " + this.description;
     }
 
@@ -23,7 +29,4 @@ public class Task {
         this.isDone = false;
     }
 
-    public boolean isDone() {
-        return this.isDone;
-    }
 }

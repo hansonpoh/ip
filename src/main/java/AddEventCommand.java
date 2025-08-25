@@ -6,6 +6,14 @@ public class AddEventCommand implements Command {
         this.desc = desc;
     }
 
+    /**
+     * Creates the Event object to be added into the list of tasks.
+     *
+     * @param tasks List of tasks
+     * @param ui any display back to the user
+     * @param f existing txt file
+     * @throws AmogusException insufficient information to create the task
+     */
     @Override
     public void execute(TaskList tasks, UI ui, FileStorage f) throws AmogusException {
         String[] parts = desc.split("/from|/to");
@@ -15,7 +23,7 @@ public class AddEventCommand implements Command {
         Event event = new Event(descr, start, end);
 
         tasks.add(event);
-        ui.showMsg(ui.format("Got it. I've added this task:\n  " + event.fullDesc() + "\nNow you have " + tasks.size() + " tasks in the list.\n"));
+        ui.showMsg(ui.format("Got it. I've added this task:\n  " + event.toString() + "\nNow you have " + tasks.size() + " tasks in the list.\n"));
         f.saveTasks(tasks);
     }
 

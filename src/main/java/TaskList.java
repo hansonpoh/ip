@@ -25,7 +25,7 @@ public class TaskList {
     }
 
     public String taskDesc(int idx) {
-        return tasks.get(idx).fullDesc();
+        return tasks.get(idx).toString();
     }
 
     public boolean isEmpty() {

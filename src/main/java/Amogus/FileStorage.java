@@ -70,7 +70,7 @@ public class FileStorage {
      * @return a Tasks.Task from txt file
      * @throws AmogusException improper date/time format
      */
-    private Task parseTask(String line) throws AmogusException {
+    public Task parseTask(String line) throws AmogusException {
         String[] parts = line.split("\\|");
         for (int i = 0; i < parts.length; i++) {
             parts[i] = parts[i].trim();

@@ -14,7 +14,7 @@ public class AddDeadlineCommand implements Command {
         Deadlines deadlines = new Deadlines(descr, by);
 
         tasks.add(deadlines);
-        ui.showMsg(ui.format("Got it. I've added this task:\n  " + deadlines.fullDesc() + "\nNow you have " + tasks.size() + " tasks in the list."));
+        ui.showMsg(ui.format("Got it. I've added this task:\n  " + deadlines.fullDesc() + "\nNow you have " + tasks.size() + " tasks in the list.\n"));
         f.saveTasks(tasks);
     }
 

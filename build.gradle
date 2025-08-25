@@ -42,8 +42,9 @@ application {
 }
 
 shadowJar {
-    archiveBaseName = "duke"
+    archiveBaseName = "Amogus"
     archiveClassifier = null
+    archiveFileName = "Amogus.jar"
 }
 
 run{

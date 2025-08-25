@@ -1,11 +1,15 @@
+package Amogus;
+
+import Command.*;
+
 public class Parser {
 
     /**
      * Takes in user input to be parsed into relevant subclasses
-     * of Command to be further executed in their own classes.
+     * of Command.Command to be further executed in their own classes.
      *
      * @param input user input
-     * @return Correct sub-Command class to be executed
+     * @return Correct sub-Command.Command class to be executed
      * @throws AmogusException unknown command
      */
     public static Command parse(String input) throws AmogusException {

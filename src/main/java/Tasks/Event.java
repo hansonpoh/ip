@@ -1,22 +1,25 @@
+package Tasks;
+
+import Amogus.AmogusException;
+
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 
 public class Event extends Task {
-    private String type = "E | ";
-    private String start;
-    private String end;
-    private LocalDateTime startDate;
-    private LocalDateTime endDate;
+    private final String start;
+    private final String end;
+    private final LocalDateTime startDate;
+    private final LocalDateTime endDate;
 
 
     /**
-     * Creates the Event object.
+     * Creates the Tasks.Event object.
      *
-     * @param description description of Event task
+     * @param description description of Tasks.Event task
      * @param start start date
      * @param end end date
-     * @throws AmogusException insufficient information to create Event task
+     * @throws AmogusException insufficient information to create Tasks.Event task
      */
     public Event(String description, String start, String end) throws AmogusException {
         super(description);
@@ -32,6 +35,7 @@ public class Event extends Task {
 
     @Override
     public String toString() {
+        String type = "E | ";
         return type + super.toString() + " (from: " + startDate.toString() + " to: " + endDate.toString() + ")";
     }
 

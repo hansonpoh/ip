@@ -1,16 +1,19 @@
+package Tasks;
+
+import Amogus.AmogusException;
+
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 
 public class Deadlines extends Task {
-    private String type = "D | ";
-    private String by;
-    private LocalDateTime byDate;
+    private final String by;
+    private final LocalDateTime byDate;
 
     /**
-     * Creates the Deadlines object.
+     * Creates the Tasks.Deadlines object.
      *
-     * @param description description of Deadlines task
+     * @param description description of Tasks.Deadlines task
      * @param by deadline
      * @throws AmogusException insufficient information to create deadlines
      */
@@ -26,6 +29,7 @@ public class Deadlines extends Task {
 
     @Override
     public String toString() {
+        String type = "D | ";
         return type + super.toString() + " (by: " + byDate.toString() + ")";
     }
 

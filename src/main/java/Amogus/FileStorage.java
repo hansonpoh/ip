@@ -1,3 +1,7 @@
+package Amogus;
+
+import Tasks.*;
+
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -12,7 +16,7 @@ public class FileStorage {
     }
 
     /**
-     * Takes in local memory TaskList to write onto a txt file
+     * Takes in local memory Tasks.TaskList to write onto a txt file
      * as a hard disk memory for future use as the program restarts
      * on a fresh new call without any local memory.
      *
@@ -33,7 +37,7 @@ public class FileStorage {
      * Reads from hard disk memory stored txt file onto local memory
      * to be displayed when list command is called.
      *
-     * @return TaskList with correctly loaded tasks from txt file
+     * @return Tasks.TaskList with correctly loaded tasks from txt file
      * @throws AmogusException improper date/time format
      * @throws IOException
      */
@@ -63,7 +67,7 @@ public class FileStorage {
      * local memory.
      *
      * @param line current line in the txt file
-     * @return a Task from txt file
+     * @return a Tasks.Task from txt file
      * @throws AmogusException improper date/time format
      */
     private Task parseTask(String line) throws AmogusException {

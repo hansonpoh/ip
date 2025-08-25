@@ -1,3 +1,11 @@
+package Command;
+
+import Amogus.AmogusException;
+import Amogus.FileStorage;
+import Amogus.UI;
+import Tasks.Event;
+import Tasks.TaskList;
+
 public class AddEventCommand implements Command {
 
     private String desc;
@@ -7,7 +15,7 @@ public class AddEventCommand implements Command {
     }
 
     /**
-     * Creates the Event object to be added into the list of tasks.
+     * Creates the Tasks.Event object to be added into the list of tasks.
      *
      * @param tasks List of tasks
      * @param ui any display back to the user

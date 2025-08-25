@@ -15,7 +15,7 @@ public class AddEventCommand implements Command {
         Event event = new Event(descr, start, end);
 
         tasks.add(event);
-        ui.showMsg(ui.format("Got it. I've added this task:\n  " + event.fullDesc() + "\nNow you have " + tasks.size() + " tasks in the list."));
+        ui.showMsg(ui.format("Got it. I've added this task:\n  " + event.fullDesc() + "\nNow you have " + tasks.size() + " tasks in the list.\n"));
         f.saveTasks(tasks);
     }
 

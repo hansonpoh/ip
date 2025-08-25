@@ -1,3 +1,7 @@
+package Tasks;
+
+import Amogus.AmogusException;
+
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Objects;
@@ -8,9 +12,9 @@ public class Deadlines extends Task {
     private LocalDateTime byDate;
 
     /**
-     * Creates the Deadlines object.
+     * Creates the Tasks.Deadlines object.
      *
-     * @param description description of Deadlines task
+     * @param description description of Tasks.Deadlines task
      * @param by deadline
      * @throws AmogusException insufficient information to create deadlines
      */

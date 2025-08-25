@@ -1,3 +1,9 @@
+package Command;
+
+import Amogus.FileStorage;
+import Amogus.UI;
+import Tasks.TaskList;
+
 public class ExitCommand implements Command {
 
     /**

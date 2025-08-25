@@ -1,15 +1,19 @@
+package Tasks;
+
+import Amogus.AmogusException;
+
 import java.util.Objects;
 
 public class ToDo extends Task {
     protected String type = "T | ";
 
     /**
-     * Creates the ToDo object.
+     * Creates the Tasks.ToDo object.
      *
-     * @param description description of ToDo task
+     * @param description description of Tasks.ToDo task
      * @throws AmogusException insufficient information to create task
      */
-    public ToDo(String description) throws AmogusException{
+    public ToDo(String description) throws AmogusException {
         super(description);
         if (Objects.equals(description, "")) {
             throw new AmogusException("Oh no! Please provide full information regarding your todo!");

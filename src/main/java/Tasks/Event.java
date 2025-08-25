@@ -1,3 +1,7 @@
+package Tasks;
+
+import Amogus.AmogusException;
+
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Objects;
@@ -11,12 +15,12 @@ public class Event extends Task {
 
 
     /**
-     * Creates the Event object.
+     * Creates the Tasks.Event object.
      *
-     * @param description description of Event task
+     * @param description description of Tasks.Event task
      * @param start start date
      * @param end end date
-     * @throws AmogusException insufficient information to create Event task
+     * @throws AmogusException insufficient information to create Tasks.Event task
      */
     public Event(String description, String start, String end) throws AmogusException {
         super(description);

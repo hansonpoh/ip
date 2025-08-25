@@ -1,14 +1,19 @@
+package Amogus;
+
+import Command.Command;
+import Tasks.TaskList;
+
 import java.io.IOException;
 
 public class Amogus {
 
     static final String name = "Amogus";
-    private static final String path = "./data/TaskList.txt";
+    private static final String path = "./data/Tasks.TaskList.txt";
 
     /**
      * Creates all necessary objects for interaction between each other,
-     * namely UI for responses to user, FileStorage for hard disk load
-     * and store, TaskList for list of tasks.
+     * namely Amogus.UI for responses to user, Amogus.FileStorage for hard disk load
+     * and store, Tasks.TaskList for list of tasks.
      */
     public static void Chat() {
         UI ui = new UI();

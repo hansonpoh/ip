@@ -1,4 +1,4 @@
-package Amogus;
+package amogus;
 
 import org.junit.jupiter.api.Test;
 

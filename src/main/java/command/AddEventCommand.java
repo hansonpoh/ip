@@ -1,10 +1,10 @@
-package Command;
+package command;
 
-import Amogus.AmogusException;
-import Amogus.FileStorage;
-import Amogus.UI;
-import Tasks.Event;
-import Tasks.TaskList;
+import amogus.AmogusException;
+import amogus.FileStorage;
+import amogus.UI;
+import tasks.Event;
+import tasks.TaskList;
 
 public class AddEventCommand implements Command {
 

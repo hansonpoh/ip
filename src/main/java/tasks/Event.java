@@ -1,17 +1,15 @@
-package Tasks;
+package tasks;
 
-import Amogus.AmogusException;
+import amogus.AmogusException;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 
 public class Event extends Task {
-    private final String start;
-    private final String end;
+
     private final LocalDateTime startDate;
     private final LocalDateTime endDate;
-
 
     /**
      * Creates the Tasks.Event object.
@@ -26,8 +24,6 @@ public class Event extends Task {
         if (Objects.equals(description, "") || Objects.equals(start, "") || Objects.equals(end, "")) {
             throw new AmogusException("Oh no! Please provide full information regarding your event!");
         }
-        this.start = start;
-        this.end = end;
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d/M/yyyy HHmm");
         this.startDate = LocalDateTime.parse(start, formatter);
         this.endDate = LocalDateTime.parse(end, formatter);

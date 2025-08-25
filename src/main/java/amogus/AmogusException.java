@@ -1,4 +1,4 @@
-package Amogus;
+package amogus;
 
 public class AmogusException extends Exception {
 

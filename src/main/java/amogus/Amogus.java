@@ -1,13 +1,13 @@
-package Amogus;
+package amogus;
 
-import Command.Command;
-import Tasks.TaskList;
+import command.Command;
+import tasks.TaskList;
 
 import java.io.IOException;
 
 public class Amogus {
 
-    static final String name = "Amogus";
+    static final String NAME = "amogus";
     private static final String path = "./data/Tasks.TaskList.txt";
 
     /**

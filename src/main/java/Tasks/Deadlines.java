@@ -7,9 +7,8 @@ import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 
 public class Deadlines extends Task {
-    private String type = "D | ";
-    private String by;
-    private LocalDateTime byDate;
+    private final String by;
+    private final LocalDateTime byDate;
 
     /**
      * Creates the Tasks.Deadlines object.
@@ -30,6 +29,7 @@ public class Deadlines extends Task {
 
     @Override
     public String toString() {
+        String type = "D | ";
         return type + super.toString() + " (by: " + byDate.toString() + ")";
     }
 

@@ -5,7 +5,6 @@ import Amogus.AmogusException;
 import java.util.Objects;
 
 public class ToDo extends Task {
-    protected String type = "T | ";
 
     /**
      * Creates the Tasks.ToDo object.
@@ -22,6 +21,7 @@ public class ToDo extends Task {
 
     @Override
     public String toString() {
+        String type = "T | ";
         return type + super.toString();
     }
 }

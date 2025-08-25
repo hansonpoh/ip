@@ -7,11 +7,10 @@ import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 
 public class Event extends Task {
-    private String type = "E | ";
-    private String start;
-    private String end;
-    private LocalDateTime startDate;
-    private LocalDateTime endDate;
+    private final String start;
+    private final String end;
+    private final LocalDateTime startDate;
+    private final LocalDateTime endDate;
 
 
     /**
@@ -36,6 +35,7 @@ public class Event extends Task {
 
     @Override
     public String toString() {
+        String type = "E | ";
         return type + super.toString() + " (from: " + startDate.toString() + " to: " + endDate.toString() + ")";
     }
 

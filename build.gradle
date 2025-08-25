@@ -38,7 +38,7 @@ test {
 }
 
 application {
-    mainClass.set("Amogus.Amogus")
+    mainClass.set("amogus.Amogus")
 }
 
 shadowJar {

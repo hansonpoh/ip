@@ -26,7 +26,7 @@ public class AddToDoCommand implements Command {
     public void execute(TaskList tasks, UI ui, FileStorage f) throws AmogusException {
         ToDo todo = new ToDo(desc);
         tasks.add(todo);
-        ui.showMsg(ui.format("Got it. I've added this task:\n  " + todo.toString() + "\nNow you have " + tasks.size() + " tasks in the list."));
+        ui.showMsg(ui.format("Got it. I've added this task:\n  " + todo + "\nNow you have " + tasks.size() + " tasks in the list."));
         f.saveTasks(tasks);
     }
 

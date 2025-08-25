@@ -6,6 +6,7 @@ import command.AddEventCommand;
 import command.AddToDoCommand;
 import command.DeleteCommand;
 import command.ExitCommand;
+import command.FindCommand;
 import command.ListCommand;
 import command.MarkCommand;
 import command.UnmarkCommand;
@@ -37,6 +38,8 @@ public class Parser {
         case "delete":
             int delIndex = Integer.parseInt(args) - 1;
             return new DeleteCommand(delIndex);
+        case "find":
+            return new FindCommand(args);
         case "todo":
             return new AddToDoCommand(args);
         case "deadline":

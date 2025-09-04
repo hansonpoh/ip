@@ -20,10 +20,12 @@ public class UnmarkCommand implements Command {
      * @param f existing txt file
      */
     @Override
-    public void execute(TaskList tasks, UI ui, FileStorage f) {
+    public String execute(TaskList tasks, UI ui, FileStorage f) {
+        String msg = "OK, I've marked this task as not done yet:\n  " + tasks.taskDesc(idx) + "\n";
         tasks.unmark(idx);
-        ui.showMsg(ui.format("OK, I've marked this task as not done yet:\n  " + tasks.taskDesc(idx) + "\n"));
+        ui.showMsg(ui.format(msg));
         f.saveTasks(tasks);
+        return msg;
     }
 
     /**
@@ -33,5 +35,9 @@ public class UnmarkCommand implements Command {
     @Override
     public boolean isExit() {
         return false;
+    }
+
+    public String getResponse(String input) {
+        return input;
     }
 }

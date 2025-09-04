@@ -14,7 +14,7 @@ public class FindCommand implements Command {
     }
 
     @Override
-    public void execute(TaskList tasks, UI ui, FileStorage f) {
+    public String execute(TaskList tasks, UI ui, FileStorage f) {
         TaskList tasksWithWord = new TaskList();
 
         for (int i = 0; i < tasks.size(); i++) {
@@ -25,9 +25,9 @@ public class FindCommand implements Command {
         }
 
         if (tasksWithWord.isEmpty()) {
-            ui.showMsg("Empty List. \n");
+            return ui.showMsg("Empty List. \n");
         } else {
-            ui.showTaskList(tasksWithWord);
+            return ui.showTaskList(tasksWithWord);
         }
     }
 
@@ -38,5 +38,9 @@ public class FindCommand implements Command {
     @Override
     public boolean isExit() {
         return false;
+    }
+
+    public String getResponse(String input) {
+        return input;
     }
 }

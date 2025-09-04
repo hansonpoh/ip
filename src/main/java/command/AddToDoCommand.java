@@ -23,11 +23,14 @@ public class AddToDoCommand implements Command {
      * @throws AmogusException insufficient information to create the task
      */
     @Override
-    public void execute(TaskList tasks, UI ui, FileStorage f) throws AmogusException {
+    public String execute(TaskList tasks, UI ui, FileStorage f) throws AmogusException {
         ToDo todo = new ToDo(desc);
         tasks.add(todo);
-        ui.showMsg(ui.format("Got it. I've added this task:\n  " + todo + "\nNow you have " + tasks.size() + " tasks in the list."));
+
+        String msg = "Got it. I've added this task:\n  " + todo + "\nNow you have " + tasks.size() + " tasks in the list.";
+        ui.showMsg(ui.format(msg));
         f.saveTasks(tasks);
+        return msg;
     }
 
     /**
@@ -37,5 +40,9 @@ public class AddToDoCommand implements Command {
     @Override
     public boolean isExit() {
         return false;
+    }
+
+    public String getResponse(String input) {
+        return input;
     }
 }

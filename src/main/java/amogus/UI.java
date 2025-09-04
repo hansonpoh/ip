@@ -10,8 +10,9 @@ public class UI {
     static String INTRO = "Hello! I'm " + Amogus.NAME + "!\nWhat can I do for you?\n";
     static String OUTRO = "Bye. Hope to see you again soon!\n";
 
-    public void showMsg(String msg) {
+    public String showMsg(String msg) {
         System.out.println(msg);
+        return msg;
     }
 
     public String format(String msg) {
@@ -24,7 +25,7 @@ public class UI {
      *
      * @param tasks list of tasks
      */
-    public void showTaskList(TaskList tasks) {
+    public String showTaskList(TaskList tasks) {
         System.out.println("test");
         String msg = "Here are the tasks in your list:\n";
         for (int i = 0; i < tasks.size(); i++) {
@@ -32,6 +33,7 @@ public class UI {
             msg += j + ". " + tasks.taskDesc(i) + "\n";
         }
         System.out.println(format(msg));
+        return format(msg);
     }
 
     /**
@@ -47,14 +49,16 @@ public class UI {
     /**
      * Prints welcome message.
      */
-    public void welcome() {
+    public String welcome() {
         System.out.println(format(INTRO));
+        return INTRO;
     }
 
     /**
      * Prints exit message.
      */
-    public void exit() {
+    public String exit() {
         System.out.println(format(OUTRO));
+        return OUTRO;
     }
 }

@@ -20,10 +20,12 @@ public class DeleteCommand implements Command {
      * @param f existing txt file
      */
     @Override
-    public void execute(TaskList tasks, UI ui, FileStorage f) {
-        ui.showMsg(ui.format("Noted. I've removed this task:\n  " + tasks.taskDesc(idx) + "\n"));
+    public String execute(TaskList tasks, UI ui, FileStorage f) {
+        String msg = "Noted. I've removed this task:\n  " + tasks.taskDesc(idx) + "\n";
+        ui.showMsg(ui.format(msg));
         tasks.delete(idx);
         f.saveTasks(tasks);
+        return msg;
     }
 
     /**
@@ -33,5 +35,9 @@ public class DeleteCommand implements Command {
     @Override
     public boolean isExit() {
         return false;
+    }
+
+    public String getResponse(String input) {
+        return input;
     }
 }

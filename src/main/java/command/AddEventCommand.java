@@ -23,16 +23,18 @@ public class AddEventCommand implements Command {
      * @throws AmogusException insufficient information to create the task
      */
     @Override
-    public void execute(TaskList tasks, UI ui, FileStorage f) throws AmogusException {
+    public String execute(TaskList tasks, UI ui, FileStorage f) throws AmogusException {
         String[] parts = desc.split("/from|/to");
         String descr = parts[0].trim();
         String start = parts[1].trim();
         String end = parts[2].trim();
         Event event = new Event(descr, start, end);
 
+        String msg = "Got it. I've added this task:\n  " + event.toString() + "\nNow you have " + tasks.size() + " tasks in the list.\n";
         tasks.add(event);
-        ui.showMsg(ui.format("Got it. I've added this task:\n  " + event.toString() + "\nNow you have " + tasks.size() + " tasks in the list.\n"));
+        ui.showMsg(ui.format(msg));
         f.saveTasks(tasks);
+        return msg;
     }
 
     /**
@@ -42,5 +44,9 @@ public class AddEventCommand implements Command {
     @Override
     public boolean isExit() {
         return false;
+    }
+
+    public String getResponse(String input) {
+        return input;
     }
 }

@@ -14,11 +14,11 @@ public class ListCommand implements Command {
      * @param f existing txt file
      */
     @Override
-    public void execute(TaskList tasks, UI ui, FileStorage f) {
+    public String execute(TaskList tasks, UI ui, FileStorage f) {
         if (tasks.isEmpty()) {
-            ui.showMsg(ui.format("Empty List.\n"));
+            return ui.showMsg(ui.format("Empty List.\n"));
         } else {
-            ui.showTaskList(tasks);
+            return ui.showTaskList(tasks);
         }
     }
 
@@ -29,5 +29,9 @@ public class ListCommand implements Command {
     @Override
     public boolean isExit() {
         return false;
+    }
+
+    public String getResponse(String input) {
+        return input;
     }
 }

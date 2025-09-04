@@ -23,15 +23,17 @@ public class AddDeadlineCommand implements Command {
      * @throws AmogusException insufficient information to create the task
      */
     @Override
-    public void execute(TaskList tasks, UI ui, FileStorage f) throws AmogusException {
+    public String execute(TaskList tasks, UI ui, FileStorage f) throws AmogusException {
         String[] parts = desc.split("/by");
         String descr = parts[0].trim();
         String by = parts[1].trim();
         Deadlines deadlines = new Deadlines(descr, by);
 
+        String msg = "Got it. I've added this task:\n  " + deadlines.toString() + "\nNow you have " + tasks.size() + " tasks in the list.\n";
         tasks.add(deadlines);
-        ui.showMsg(ui.format("Got it. I've added this task:\n  " + deadlines.toString() + "\nNow you have " + tasks.size() + " tasks in the list.\n"));
+        ui.showMsg(ui.format(msg));
         f.saveTasks(tasks);
+        return msg;
     }
 
     /**
@@ -41,5 +43,9 @@ public class AddDeadlineCommand implements Command {
     @Override
     public boolean isExit() {
         return false;
+    }
+
+    public String getResponse(String input) {
+        return input;
     }
 }

@@ -14,8 +14,8 @@ public class ExitCommand implements Command {
      * @param f existing txt file
      */
     @Override
-    public void execute(TaskList tasks, UI ui, FileStorage f) {
-        ui.exit();
+    public String execute(TaskList tasks, UI ui, FileStorage f) {
+        return ui.exit();
     }
 
     /**
@@ -25,5 +25,9 @@ public class ExitCommand implements Command {
     @Override
     public boolean isExit() {
         return true;
+    }
+
+    public String getResponse(String input) {
+        return input;
     }
 }

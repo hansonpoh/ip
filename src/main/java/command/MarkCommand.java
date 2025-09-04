@@ -20,10 +20,12 @@ public class MarkCommand implements Command {
      * @param f existing txt file
      */
     @Override
-    public void execute(TaskList tasks, UI ui, FileStorage f) {
+    public String execute(TaskList tasks, UI ui, FileStorage f) {
+        String msg = "Nice! I've marked this task as done:\n  " + tasks.taskDesc(idx) + "\n";
         tasks.mark(idx);
-        ui.showMsg(ui.format("Nice! I've marked this task as done:\n  " + tasks.taskDesc(idx) + "\n"));
+        ui.showMsg(ui.format(msg));
         f.saveTasks(tasks);
+        return msg;
     }
 
     /**
@@ -33,5 +35,9 @@ public class MarkCommand implements Command {
     @Override
     public boolean isExit() {
         return false;
+    }
+
+    public String getResponse(String input) {
+        return input;
     }
 }

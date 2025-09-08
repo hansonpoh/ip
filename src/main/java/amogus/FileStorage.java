@@ -88,27 +88,25 @@ public class FileStorage {
 
         String type = parts[0];
         boolean isDone = parts[1].equals("1");
+        String tag = "";
 
+        for (String part : parts) {
+            if (part.startsWith("#")) {
+                tag = part.substring(1).trim();
+            }
+        }
+
+        Task task;
         switch (type) {
         case "T":
-            ToDo todo = new ToDo(parts[2]);
-            if (isDone) {
-                todo.mark();
-            }
-
-            return todo;
-
+            task = new ToDo(parts[2]);
+            break;
         case "D":
             if (parts.length < 4) {
                 throw new AmogusException("Invalid deadline format");
             }
-            Deadlines deadlines = new Deadlines(parts[2], parts[3]);
-            if (isDone) {
-                deadlines.mark();
-            }
-
-            return deadlines;
-
+            task = new Deadlines(parts[2], parts[3]);
+            break;
         case "E":
             if (parts.length < 4) {
                 throw new AmogusException("Invalid event format");
@@ -117,15 +115,19 @@ public class FileStorage {
             if (times.length < 2) {
                 throw new AmogusException("Invalid event time format");
             }
-            Event event = new Event(parts[2], times[0], times[1]);
-            if (isDone) {
-                event.mark();
-            }
-
-            return event;
-
+            task = new Event(parts[2], times[0], times[1]);
         default:
             throw new AmogusException("Unknown task type: " + type);
         }
+
+        if (isDone) {
+            task.mark();
+        }
+
+        if (!tag.isEmpty()) {
+            task.tag(tag);
+        }
+
+        return task;
     }
 }

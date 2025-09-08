@@ -13,6 +13,7 @@ public class Deadlines extends Task {
 
     private final String by;
     private final LocalDateTime byDate;
+    private String tag;
 
     /**
      * Creates the Tasks.Deadlines object.
@@ -37,7 +38,7 @@ public class Deadlines extends Task {
     @Override
     public String toString() {
         String type = "D | ";
-        return type + super.toString() + " (by: " + byDate.toString() + ")";
+        return type + super.toString() + " (by: " + byDate.toString() + ")" + this.getTag();
     }
 
 }

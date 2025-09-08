@@ -1,5 +1,7 @@
 package tasks;
 
+import amogus.AmogusException;
+
 /**
  * Represents a Task object.
  */
@@ -7,6 +9,8 @@ public class Task {
 
     private String description;
     private boolean isDone;
+    private String tag;
+    private boolean isTagged;
 
     /**
      * Creates a new Task object with a description.
@@ -15,6 +19,8 @@ public class Task {
     public Task(String description) {
         this.description = description;
         this.isDone = false;
+        this.tag = "";
+        this.isTagged = false;
     }
 
     /**
@@ -25,13 +31,6 @@ public class Task {
      */
     public String getStatusIcon() {
         return (isDone ? "1" : "0");
-    }
-
-    /**
-     * @return string representation of Task
-     */
-    public String toString() {
-        return this.getStatusIcon() + " | " + this.description;
     }
 
     /**
@@ -46,6 +45,38 @@ public class Task {
      */
     public void unmark() {
         this.isDone = false;
+    }
+
+    /**
+     * Tags the task.
+     * @param tag tag description.
+     */
+    public void tag(String tag) throws AmogusException {
+        if (this.isTagged) {
+            throw new AmogusException("Task already tagged!");
+        } else {
+            this.tag = tag;
+            this.isTagged = true;
+        }
+    }
+
+    /**
+     * Gives string rep of tag
+     * @return tag
+     */
+    public String getTag() {
+        if (this.tag == "") {
+            return "";
+        } else {
+            return " | #" + this.tag;
+        }
+    }
+
+    /**
+     * @return string representation of Task
+     */
+    public String toString() {
+        return this.getStatusIcon() + " | " + this.description;
     }
 
 }

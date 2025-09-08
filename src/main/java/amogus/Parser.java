@@ -9,6 +9,7 @@ import command.ExitCommand;
 import command.FindCommand;
 import command.ListCommand;
 import command.MarkCommand;
+import command.TagCommand;
 import command.UnmarkCommand;
 
 /**
@@ -46,6 +47,8 @@ public class Parser {
             return new DeleteCommand(delIndex);
         case "find":
             return new FindCommand(args);
+        case "tag":
+            return new TagCommand(args);
         case "todo":
             return new AddToDoCommand(args);
         case "deadline":

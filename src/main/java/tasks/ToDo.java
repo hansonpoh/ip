@@ -9,6 +9,8 @@ import amogus.AmogusException;
  */
 public class ToDo extends Task {
 
+    private String tag;
+
     /**
      * Creates the Tasks.ToDo object.
      *
@@ -28,6 +30,6 @@ public class ToDo extends Task {
     @Override
     public String toString() {
         String type = "T | ";
-        return type + super.toString();
+        return type + super.toString() + this.getTag();
     }
 }

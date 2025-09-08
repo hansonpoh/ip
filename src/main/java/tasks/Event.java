@@ -13,6 +13,7 @@ public class Event extends Task {
 
     private final LocalDateTime startDate;
     private final LocalDateTime endDate;
+    private String tag;
 
     /**
      * Creates the Tasks.Event object.
@@ -38,7 +39,8 @@ public class Event extends Task {
     @Override
     public String toString() {
         String type = "E | ";
-        return type + super.toString() + " (from: " + startDate.toString() + " to: " + endDate.toString() + ")";
+        return type + super.toString() + " (from: " + startDate.toString()
+                + " to: " + endDate.toString() + ")" + this.getTag();
     }
 
 }

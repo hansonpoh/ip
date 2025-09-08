@@ -2,6 +2,8 @@ package tasks;
 
 import java.util.ArrayList;
 
+import amogus.AmogusException;
+
 /**
  * Represents the list of tasks.
  */
@@ -49,6 +51,15 @@ public class TaskList {
      */
     public void unmark(int idx) {
         tasks.get(idx).unmark();
+    }
+
+    /**
+     * Tags the task in arraylist
+     * @param idx index of task in arraylist
+     * @param tag tag description
+     */
+    public void tag(int idx, String tag) throws AmogusException {
+        tasks.get(idx).tag(tag);
     }
 
     /**

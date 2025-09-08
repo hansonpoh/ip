@@ -26,7 +26,6 @@ public class UI {
      * @param tasks list of tasks
      */
     public String showTaskList(TaskList tasks) {
-        System.out.println("test");
         String msg = "Here are the tasks in your list:\n";
         for (int i = 0; i < tasks.size(); i++) {
             int j = i + 1;

@@ -27,7 +27,4 @@ public class ExitCommand implements Command {
         return true;
     }
 
-    public String getResponse(String input) {
-        return input;
-    }
 }

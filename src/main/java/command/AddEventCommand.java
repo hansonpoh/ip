@@ -12,6 +12,7 @@ public class AddEventCommand implements Command {
 
     public AddEventCommand(String desc) throws AmogusException {
         this.desc = desc;
+        assert desc != null : "no empty description";
     }
 
     /**
@@ -28,6 +29,10 @@ public class AddEventCommand implements Command {
         String descr = parts[0].trim();
         String start = parts[1].trim();
         String end = parts[2].trim();
+
+        assert start != null : "start date cannot be empty";
+        assert end != null : "end date cannot be empty";
+
         Event event = new Event(descr, start, end);
 
         String msg = "Got it. I've added this task:\n  " + event.toString() + "\nNow you have " + tasks.size() + " tasks in the list.\n";
@@ -46,7 +51,4 @@ public class AddEventCommand implements Command {
         return false;
     }
 
-    public String getResponse(String input) {
-        return input;
-    }
 }

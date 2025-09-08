@@ -2,12 +2,15 @@ package tasks;
 
 import java.util.ArrayList;
 
+/**
+ * Represents the list of tasks.
+ */
 public class TaskList {
 
     private ArrayList<Task> tasks = new ArrayList<Task>();
 
     /**
-     *
+     * Getter for Task object.
      * @param idx index of task in the TaskList
      * @return Task object
      */
@@ -49,11 +52,11 @@ public class TaskList {
     }
 
     /**
-     *
+     * Gets task description of the object.
      * @param idx index of task in arraylist
      * @return String representation of task
      */
-    public String taskDesc(int idx) {
+    public String getTaskDesc(int idx) {
         return tasks.get(idx).toString();
     }
 
@@ -66,10 +69,10 @@ public class TaskList {
     }
 
     /**
-     *
+     * Getter for number of tasks.
      * @return number of tasks in arraylist
      */
-    public int size() {
+    public int getSize() {
         return tasks.size();
     }
 }

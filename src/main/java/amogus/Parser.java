@@ -1,9 +1,9 @@
 package amogus;
 
-import command.Command;
 import command.AddDeadlineCommand;
 import command.AddEventCommand;
 import command.AddToDoCommand;
+import command.Command;
 import command.DeleteCommand;
 import command.ExitCommand;
 import command.FindCommand;
@@ -11,6 +11,10 @@ import command.ListCommand;
 import command.MarkCommand;
 import command.UnmarkCommand;
 
+/**
+ * This class deals with user input and returns the
+ * correct command to be executed.
+ */
 public class Parser {
 
     /**

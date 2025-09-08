@@ -1,11 +1,14 @@
 package tasks;
 
-import amogus.AmogusException;
-
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 
+import amogus.AmogusException;
+
+/**
+ * Represents a Deadlines object.
+ */
 public class Deadlines extends Task {
 
     private final String by;
@@ -29,7 +32,6 @@ public class Deadlines extends Task {
     }
 
     /**
-     *
      * @return String representation of Deadline task
      */
     @Override

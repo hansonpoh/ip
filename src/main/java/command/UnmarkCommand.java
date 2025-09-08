@@ -4,6 +4,9 @@ import amogus.FileStorage;
 import amogus.UI;
 import tasks.TaskList;
 
+/**
+ * Represents marking a Task as incomplete.
+ */
 public class UnmarkCommand implements Command {
 
     private int idx;
@@ -22,7 +25,7 @@ public class UnmarkCommand implements Command {
      */
     @Override
     public String execute(TaskList tasks, UI ui, FileStorage f) {
-        String msg = "OK, I've marked this task as not done yet:\n  " + tasks.taskDesc(idx) + "\n";
+        String msg = "OK, I've marked this task as not done yet:\n  " + tasks.getTaskDesc(idx) + "\n";
         tasks.unmark(idx);
         ui.showMsg(ui.format(msg));
         f.saveTasks(tasks);

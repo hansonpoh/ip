@@ -4,6 +4,10 @@ import amogus.FileStorage;
 import amogus.UI;
 import tasks.TaskList;
 
+/**
+ * Represents an instruction for the chatbot to display
+ * list of tasks.
+ */
 public class ListCommand implements Command {
 
     /**

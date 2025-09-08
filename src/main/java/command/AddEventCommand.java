@@ -6,10 +6,18 @@ import amogus.UI;
 import tasks.Event;
 import tasks.TaskList;
 
+/**
+ * This class creates a Event object to be added
+ * to the list of tasks.
+ */
 public class AddEventCommand implements Command {
 
     private String desc;
 
+    /**
+     * Creates the command to add an Event object
+     * @param desc description of event
+     */
     public AddEventCommand(String desc) throws AmogusException {
         this.desc = desc;
         assert desc != null : "no empty description";
@@ -35,7 +43,8 @@ public class AddEventCommand implements Command {
 
         Event event = new Event(descr, start, end);
 
-        String msg = "Got it. I've added this task:\n  " + event.toString() + "\nNow you have " + tasks.size() + " tasks in the list.\n";
+        String msg = "Got it. I've added this task:\n  " + event.toString() + "\nNow you have "
+                + tasks.getSize() + " tasks in the list.\n";
         tasks.add(event);
         ui.showMsg(ui.format(msg));
         f.saveTasks(tasks);

@@ -6,10 +6,18 @@ import amogus.UI;
 import tasks.TaskList;
 import tasks.ToDo;
 
+/**
+ * This class creates the ToDo object to be added
+ * to the list of tasks.
+ */
 public class AddToDoCommand implements Command {
 
     private String desc;
 
+    /**
+     * Creates the command to add a todo object
+     * @param desc description of todo
+     */
     public AddToDoCommand(String desc) throws AmogusException {
         this.desc = desc;
         assert desc != null : "no empty description";
@@ -28,7 +36,8 @@ public class AddToDoCommand implements Command {
         ToDo todo = new ToDo(desc);
         tasks.add(todo);
 
-        String msg = "Got it. I've added this task:\n  " + todo + "\nNow you have " + tasks.size() + " tasks in the list.";
+        String msg = "Got it. I've added this task:\n  " + todo + "\nNow you have "
+                + tasks.getSize() + " tasks in the list.";
         ui.showMsg(ui.format(msg));
         f.saveTasks(tasks);
         return msg;

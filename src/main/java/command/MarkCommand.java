@@ -4,6 +4,9 @@ import amogus.FileStorage;
 import amogus.UI;
 import tasks.TaskList;
 
+/**
+ * Representing marking a task as complete.
+ */
 public class MarkCommand implements Command {
 
     private int idx;
@@ -22,7 +25,7 @@ public class MarkCommand implements Command {
      */
     @Override
     public String execute(TaskList tasks, UI ui, FileStorage f) {
-        String msg = "Nice! I've marked this task as done:\n  " + tasks.taskDesc(idx) + "\n";
+        String msg = "Nice! I've marked this task as done:\n  " + tasks.getTaskDesc(idx) + "\n";
         tasks.mark(idx);
         ui.showMsg(ui.format(msg));
         f.saveTasks(tasks);

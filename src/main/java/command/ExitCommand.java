@@ -4,6 +4,9 @@ import amogus.FileStorage;
 import amogus.UI;
 import tasks.TaskList;
 
+/**
+ * Represents exiting the chatbot.
+ */
 public class ExitCommand implements Command {
 
     /**

@@ -1,15 +1,24 @@
 package amogus;
 
-import tasks.TaskList;
-
 import java.util.Scanner;
 
+import tasks.TaskList;
+
+/**
+ * This class deals with output given by the chatbot
+ * to the user.
+ */
 public class UI {
 
-    static String HORILINES = "____________________________________________________________\n";
-    static String INTRO = "Hello! I'm " + Amogus.NAME + "!\nWhat can I do for you?\n";
-    static String OUTRO = "Bye. Hope to see you again soon!\n";
+    static final String HORILINES = "____________________________________________________________\n";
+    static final String INTRO = "Hello! I'm " + Amogus.NAME + "!\nWhat can I do for you?\n";
+    static final String OUTRO = "Bye. Hope to see you again soon!\n";
 
+    /**
+     * Prints the message.
+     * @param msg any input message.
+     * @return the input message.
+     */
     public String showMsg(String msg) {
         System.out.println(msg);
         return msg;
@@ -27,9 +36,9 @@ public class UI {
      */
     public String showTaskList(TaskList tasks) {
         String msg = "Here are the tasks in your list:\n";
-        for (int i = 0; i < tasks.size(); i++) {
+        for (int i = 0; i < tasks.getSize(); i++) {
             int j = i + 1;
-            msg += j + ". " + tasks.taskDesc(i) + "\n";
+            msg += j + ". " + tasks.getTaskDesc(i) + "\n";
         }
         System.out.println(format(msg));
         return format(msg);

@@ -14,6 +14,7 @@ public class FindCommand implements Command {
 
     public FindCommand(String word) {
         this.wordToFind = word;
+        assert word != null : "unable to search for empty word";
     }
 
     @Override
@@ -43,7 +44,4 @@ public class FindCommand implements Command {
         return false;
     }
 
-    public String getResponse(String input) {
-        return input;
-    }
 }

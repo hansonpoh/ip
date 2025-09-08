@@ -14,8 +14,9 @@ public class AddDeadlineCommand implements Command {
 
     private String desc;
 
-    public AddDeadlineCommand(String desc) throws AmogusException {
+    public AddDeadlineCommand(String desc) {
         this.desc = desc;
+        assert desc != null : "no empty description";
     }
 
     /**
@@ -31,6 +32,9 @@ public class AddDeadlineCommand implements Command {
         String[] parts = desc.split("/by");
         String descr = parts[0].trim();
         String by = parts[1].trim();
+
+        assert by != null : "deadline cannot be empty";
+
         Deadlines deadlines = new Deadlines(descr, by);
 
         String msg = "Got it. I've added this task:\n  " + deadlines.toString() + "\nNow you have "
@@ -50,7 +54,4 @@ public class AddDeadlineCommand implements Command {
         return false;
     }
 
-    public String getResponse(String input) {
-        return input;
-    }
 }

@@ -16,6 +16,7 @@ public class AddToDoCommand implements Command {
 
     public AddToDoCommand(String desc) throws AmogusException {
         this.desc = desc;
+        assert desc != null : "no empty description";
     }
 
     /**
@@ -47,7 +48,4 @@ public class AddToDoCommand implements Command {
         return false;
     }
 
-    public String getResponse(String input) {
-        return input;
-    }
 }

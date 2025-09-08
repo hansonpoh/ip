@@ -26,6 +26,8 @@ public class Parser {
      * @throws AmogusException unknown command
      */
     public static Command parse(String input) throws AmogusException {
+        assert input != null : "input must not be null";
+
         String[] parts = input.split(" ", 2);
         String commandWord = parts[0];
         String args = parts.length > 1 ? parts[1] : "";

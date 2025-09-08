@@ -79,6 +79,8 @@ public class FileStorage {
      * @throws AmogusException improper date/time format
      */
     public Task parseTask(String line) throws AmogusException {
+        assert line != null : "empty line cannot be parsed";
+
         String[] parts = line.split("\\|");
         for (int i = 0; i < parts.length; i++) {
             parts[i] = parts[i].trim();

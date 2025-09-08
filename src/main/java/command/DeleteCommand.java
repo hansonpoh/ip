@@ -13,6 +13,7 @@ public class DeleteCommand implements Command {
 
     public DeleteCommand(int idx) {
         this.idx = idx;
+        assert idx >= 0 : "index cannot be negative";
     }
 
     /**
@@ -40,7 +41,4 @@ public class DeleteCommand implements Command {
         return false;
     }
 
-    public String getResponse(String input) {
-        return input;
-    }
 }

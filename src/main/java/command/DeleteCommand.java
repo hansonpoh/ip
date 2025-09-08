@@ -4,6 +4,9 @@ import amogus.FileStorage;
 import amogus.UI;
 import tasks.TaskList;
 
+/**
+ * Represents deleting a Task from the list.
+ */
 public class DeleteCommand implements Command {
 
     private int idx;
@@ -21,7 +24,7 @@ public class DeleteCommand implements Command {
      */
     @Override
     public String execute(TaskList tasks, UI ui, FileStorage f) {
-        String msg = "Noted. I've removed this task:\n  " + tasks.taskDesc(idx) + "\n";
+        String msg = "Noted. I've removed this task:\n  " + tasks.getTaskDesc(idx) + "\n";
         ui.showMsg(ui.format(msg));
         tasks.delete(idx);
         f.saveTasks(tasks);

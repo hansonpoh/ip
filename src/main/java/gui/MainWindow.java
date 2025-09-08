@@ -1,5 +1,7 @@
 package gui;
 
+import java.io.IOException;
+
 import amogus.Amogus;
 import amogus.AmogusException;
 import amogus.FileStorage;
@@ -15,12 +17,12 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import tasks.TaskList;
 
-import java.io.IOException;
-
 /**
  * Controller for the main GUI.
  */
 public class MainWindow extends AnchorPane {
+    private static final String PATH = "./data/Tasks.TaskList.txt";
+    private Amogus duke;
     @FXML
     private ScrollPane scrollPane;
     @FXML
@@ -30,8 +32,6 @@ public class MainWindow extends AnchorPane {
     @FXML
     private Button sendButton;
 
-    private Amogus duke;
-    private static final String path = "./data/Tasks.TaskList.txt";
 
     private Image userImage = new Image(this.getClass().getResourceAsStream("/images/DaUser.png"));
     private Image dukeImage = new Image(this.getClass().getResourceAsStream("/images/DaDuke.png"));
@@ -54,7 +54,7 @@ public class MainWindow extends AnchorPane {
     private void handleUserInput() throws AmogusException {
         String input = userInput.getText();
         Parser parser = new Parser();
-        FileStorage fs = new FileStorage(path);
+        FileStorage fs = new FileStorage(PATH);
         TaskList tasks;
         UI ui = new UI();
 

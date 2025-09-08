@@ -1,15 +1,17 @@
 package gui;
 
-import amogus.Amogus;
-
 import java.io.IOException;
 
+import amogus.Amogus;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
+/**
+ * Represents the stage for displaying the GUI.
+ */
 public class Main extends Application {
 
     private Amogus amogus = new Amogus();
@@ -21,7 +23,7 @@ public class Main extends Application {
             AnchorPane ap = fxmlLoader.load();
             Scene scene = new Scene(ap);
             stage.setScene(scene);
-            fxmlLoader.<MainWindow>getController().setDuke(amogus);  // inject the Duke instance
+            fxmlLoader.<MainWindow>getController().setDuke(amogus);
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();

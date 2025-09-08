@@ -1,11 +1,14 @@
 package tasks;
 
-import amogus.AmogusException;
-
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 
+import amogus.AmogusException;
+
+/**
+ * Represents an Event object.
+ */
 public class Event extends Task {
 
     private final LocalDateTime startDate;
@@ -30,7 +33,6 @@ public class Event extends Task {
     }
 
     /**
-     *
      * @return string representation of Event task
      */
     @Override

@@ -1,22 +1,26 @@
 package amogus;
 
-import tasks.Task;
-import tasks.TaskList;
-import tasks.ToDo;
-import tasks.Deadlines;
-import tasks.Event;
-
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
 
+import tasks.Deadlines;
+import tasks.Event;
+import tasks.Task;
+import tasks.TaskList;
+import tasks.ToDo;
+
+/**
+ * Represents a class that modifies the hard disk file
+ * for displaying user tasks, allowing for saved memory.
+ */
 public class FileStorage {
 
-    private final String PATH;
+    private final String path;
 
     public FileStorage(String path) {
-        this.PATH = path;
+        this.path = path;
     }
 
     /**
@@ -27,8 +31,8 @@ public class FileStorage {
      * @param tasks list of tasks
      */
     public void saveTasks(TaskList tasks) {
-        try (FileWriter fw = new FileWriter(PATH)) {
-            for (int i = 0; i < tasks.size(); i++) {
+        try (FileWriter fw = new FileWriter(path)) {
+            for (int i = 0; i < tasks.getSize(); i++) {
                 Task task = tasks.get(i);
                 fw.write(task.toString() + "\n");
             }
@@ -47,7 +51,7 @@ public class FileStorage {
      */
     public TaskList loadTasks() throws AmogusException, IOException {
         TaskList tasks = new TaskList();
-        File f = new File(PATH);
+        File f = new File(path);
 
         if (!f.exists()) {
             f.createNewFile();
@@ -84,27 +88,42 @@ public class FileStorage {
         boolean isDone = parts[1].equals("1");
 
         switch (type) {
-            case "T":
-                ToDo todo = new ToDo(parts[2]);
-                if (isDone) todo.mark();
-                return todo;
+        case "T":
+            ToDo todo = new ToDo(parts[2]);
+            if (isDone) {
+                todo.mark();
+            }
 
-            case "D":
-                if (parts.length < 4) throw new AmogusException("Invalid deadline format");
-                Deadlines deadlines = new Deadlines(parts[2], parts[3]);
-                if (isDone) deadlines.mark();
-                return deadlines;
+            return todo;
 
-            case "E":
-                if (parts.length < 4) throw new AmogusException("Invalid event format");
-                String[] times = parts[3].split("-", 2);
-                if (times.length < 2) throw new AmogusException("Invalid event time format");
-                Event event = new Event(parts[2], times[0], times[1]);
-                if (isDone) event.mark();
-                return event;
+        case "D":
+            if (parts.length < 4) {
+                throw new AmogusException("Invalid deadline format");
+            }
+            Deadlines deadlines = new Deadlines(parts[2], parts[3]);
+            if (isDone) {
+                deadlines.mark();
+            }
 
-            default:
-                throw new AmogusException("Unknown task type: " + type);
+            return deadlines;
+
+        case "E":
+            if (parts.length < 4) {
+                throw new AmogusException("Invalid event format");
+            }
+            String[] times = parts[3].split("-", 2);
+            if (times.length < 2) {
+                throw new AmogusException("Invalid event time format");
+            }
+            Event event = new Event(parts[2], times[0], times[1]);
+            if (isDone) {
+                event.mark();
+            }
+
+            return event;
+
+        default:
+            throw new AmogusException("Unknown task type: " + type);
         }
     }
 }

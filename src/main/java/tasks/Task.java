@@ -1,10 +1,17 @@
 package tasks;
 
+/**
+ * Represents a Task object.
+ */
 public class Task {
 
     private String description;
     private boolean isDone;
 
+    /**
+     * Creates a new Task object with a description.
+     * @param description desc of task.
+     */
     public Task(String description) {
         this.description = description;
         this.isDone = false;
@@ -21,7 +28,6 @@ public class Task {
     }
 
     /**
-     *
      * @return string representation of Task
      */
     public String toString() {

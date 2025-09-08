@@ -6,6 +6,10 @@ import amogus.UI;
 import tasks.Deadlines;
 import tasks.TaskList;
 
+/**
+ * This class creates a Deadlines object to be added
+ * to the list of tasks.
+ */
 public class AddDeadlineCommand implements Command {
 
     private String desc;
@@ -29,7 +33,8 @@ public class AddDeadlineCommand implements Command {
         String by = parts[1].trim();
         Deadlines deadlines = new Deadlines(descr, by);
 
-        String msg = "Got it. I've added this task:\n  " + deadlines.toString() + "\nNow you have " + tasks.size() + " tasks in the list.\n";
+        String msg = "Got it. I've added this task:\n  " + deadlines.toString() + "\nNow you have "
+                + tasks.getSize() + " tasks in the list.\n";
         tasks.add(deadlines);
         ui.showMsg(ui.format(msg));
         f.saveTasks(tasks);

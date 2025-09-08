@@ -1,9 +1,12 @@
 package tasks;
 
-import amogus.AmogusException;
-
 import java.util.Objects;
 
+import amogus.AmogusException;
+
+/**
+ * Represents a ToDo object.
+ */
 public class ToDo extends Task {
 
     /**
@@ -20,7 +23,6 @@ public class ToDo extends Task {
     }
 
     /**
-     *
      * @return string representation of ToDo task
      */
     @Override

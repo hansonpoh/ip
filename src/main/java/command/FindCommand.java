@@ -5,6 +5,9 @@ import amogus.UI;
 import tasks.Task;
 import tasks.TaskList;
 
+/**
+ * Represents finding a task through an input keyword.
+ */
 public class FindCommand implements Command {
 
     private String wordToFind;
@@ -17,7 +20,7 @@ public class FindCommand implements Command {
     public String execute(TaskList tasks, UI ui, FileStorage f) {
         TaskList tasksWithWord = new TaskList();
 
-        for (int i = 0; i < tasks.size(); i++) {
+        for (int i = 0; i < tasks.getSize(); i++) {
             Task task = tasks.get(i);
             if (task.toString().toLowerCase().contains(wordToFind.toLowerCase())) {
                 tasksWithWord.add(task);

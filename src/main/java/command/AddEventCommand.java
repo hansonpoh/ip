@@ -14,6 +14,10 @@ public class AddEventCommand implements Command {
 
     private String desc;
 
+    /**
+     * Creates the command to add an Event object
+     * @param desc description of event
+     */
     public AddEventCommand(String desc) throws AmogusException {
         this.desc = desc;
         assert desc != null : "no empty description";

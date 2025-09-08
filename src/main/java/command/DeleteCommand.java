@@ -11,6 +11,10 @@ public class DeleteCommand implements Command {
 
     private int idx;
 
+    /**
+     * Creates the delete command for deleting a task from list
+     * @param idx index of task in the list
+     */
     public DeleteCommand(int idx) {
         this.idx = idx;
         assert idx >= 0 : "index cannot be negative";

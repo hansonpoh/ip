@@ -14,6 +14,10 @@ public class AddToDoCommand implements Command {
 
     private String desc;
 
+    /**
+     * Creates the command to add a todo object
+     * @param desc description of todo
+     */
     public AddToDoCommand(String desc) throws AmogusException {
         this.desc = desc;
         assert desc != null : "no empty description";

@@ -14,6 +14,10 @@ public class AddDeadlineCommand implements Command {
 
     private String desc;
 
+    /**
+     * Creates the command to add a deadline object
+     * @param desc description of deadline
+     */
     public AddDeadlineCommand(String desc) {
         this.desc = desc;
         assert desc != null : "no empty description";

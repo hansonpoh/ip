@@ -31,7 +31,4 @@ public class ListCommand implements Command {
         return false;
     }
 
-    public String getResponse(String input) {
-        return input;
-    }
 }

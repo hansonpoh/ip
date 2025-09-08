@@ -38,7 +38,4 @@ public class Deadlines extends Task {
         return type + super.toString() + " (by: " + byDate.toString() + ")";
     }
 
-    public String by() {
-        return this.by;
-    }
 }

@@ -8,6 +8,8 @@ import amogus.FileStorage;
 import amogus.Parser;
 import amogus.UI;
 import command.Command;
+import javafx.animation.PauseTransition;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
@@ -15,6 +17,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
+import javafx.util.Duration;
 import tasks.TaskList;
 
 /**
@@ -24,6 +28,7 @@ public class MainWindow extends AnchorPane {
     private static final String FILE_PATH = "./data/Tasks.TaskList.txt";
     private Amogus amogus;
     private UI ui = new UI();
+    private Stage stage;
     @FXML
     private ScrollPane scrollPane;
     @FXML
@@ -36,6 +41,10 @@ public class MainWindow extends AnchorPane {
 
     private Image userImage = new Image(this.getClass().getResourceAsStream("/images/DaUser.png"));
     private Image amogusImage = new Image(this.getClass().getResourceAsStream("/images/DaDuke.png"));
+
+    public void setStage(Stage stage) {
+        this.stage = stage;
+    }
 
     /**
      * Gets chatbot to show welcome message when GUI is shown.
@@ -72,11 +81,13 @@ public class MainWindow extends AnchorPane {
         }
 
         String response;
+        Command command;
         try {
-            Command command = Parser.parse(input);
+            command = Parser.parse(input);
             response = command.execute(tasks, ui, fs);
         } catch (AmogusException e) {
             response = "Oops! I'm not sure what your command is!";
+            command = null;
         }
 
         dialogContainer.getChildren().addAll(
@@ -84,5 +95,13 @@ public class MainWindow extends AnchorPane {
                 DialogBox.create(response, amogusImage, true)
         );
         userInput.clear();
+
+        if (command != null && command.isExit() && stage != null) {
+            Platform.runLater(() -> {
+                PauseTransition delay = new PauseTransition(Duration.seconds(1.5));
+                delay.setOnFinished(event -> stage.close());
+                delay.play();
+            });
+        }
     }
 }

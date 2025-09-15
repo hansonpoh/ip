@@ -70,9 +70,8 @@ public class FileStorage {
     }
 
     /**
-     * When reading the tasks from txt file, parses the task
-     * into its appropriate subclasses to be stored onto the
-     * local memory.
+     * Parses the task from given user input into its
+     * appropriate subclasses, and returns the correct task.
      *
      * @param line current line in the txt file
      * @return a Tasks.Task from txt file

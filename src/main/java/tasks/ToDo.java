@@ -22,11 +22,19 @@ public class ToDo extends Task {
     }
 
     /**
+     * Returns the type of task.
+     * @return todo type of task.
+     */
+    @Override
+    public String getType() {
+        return "T";
+    }
+
+    /**
      * @return string representation of ToDo task
      */
     @Override
     public String toString() {
-        String type = "T | ";
-        return type + super.toString() + this.getTag();
+        return super.toString() + this.getTag();
     }
 }

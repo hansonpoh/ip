@@ -33,6 +33,26 @@ public class Event extends Task {
     }
 
     /**
+     * Returns the type of task.
+     * @return event type of task.
+     */
+    @Override
+    public String getType() {
+        return "E";
+    }
+
+    /**
+     * Correct display of task for easier understanding.
+     * @return display string of task.
+     */
+    @Override
+    public String getDisplayString() {
+        return "[" + getType() + "][" + (isDone() ? "X" : " ") + "] "
+                + getDescription() + " (from: " + startDate.toString()
+                + " to: " + endDate.toString() + ")" + getTag();
+    }
+
+    /**
      * @return string representation of Event task
      */
     @Override

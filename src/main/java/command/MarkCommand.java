@@ -13,7 +13,7 @@ public class MarkCommand implements Command {
 
     /**
      * Creates the command to mark a task.
-     * @param idx
+     * @param idx index of task in list
      */
     public MarkCommand(int idx) {
         this.idx = idx;
@@ -30,7 +30,7 @@ public class MarkCommand implements Command {
     @Override
     public String execute(TaskList tasks, UI ui, FileStorage f) {
         tasks.mark(idx);
-        String msg = "Nice! I've marked this task as done:\n  " + tasks.getTaskDesc(idx) + "\n";
+        String msg = "Nice! I've marked this task as done:\n  " + tasks.get(idx).getDisplayString() + "\n";
         ui.showMsg(ui.format(msg));
         f.saveTasks(tasks);
         return msg;

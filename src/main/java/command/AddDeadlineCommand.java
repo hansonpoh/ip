@@ -41,7 +41,7 @@ public class AddDeadlineCommand implements Command {
 
         Deadlines deadlines = new Deadlines(descr, by);
 
-        String msg = "Got it. I've added this task:\n  " + deadlines.toString() + "\nNow you have "
+        String msg = "Got it. I've added this task:\n  " + deadlines.getDisplayString() + "\nNow you have "
                 + tasks.getSize() + " tasks in the list.\n";
         tasks.add(deadlines);
         ui.showMsg(ui.format(msg));

@@ -22,6 +22,14 @@ public class FindCommand implements Command {
         assert word != null : "unable to search for empty word";
     }
 
+    /**
+     * Searches for keyword from list of tasks and outputs
+     * new list with tasks that match the keyword.
+     * @param tasks list of tasks
+     * @param ui ui
+     * @param f list of task txt file
+     * @return message of completed task
+     */
     @Override
     public String execute(TaskList tasks, UI ui, FileStorage f) {
         TaskList tasksWithWord = new TaskList();

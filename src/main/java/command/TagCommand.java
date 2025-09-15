@@ -20,6 +20,14 @@ public class TagCommand implements Command {
         this.desc = desc;
     }
 
+    /**
+     * Tags the task with the given tag information.
+     * @param tasks list of tasks
+     * @param ui ui
+     * @param f list of tasks txt file
+     * @return message of completed tag
+     * @throws AmogusException empty tag
+     */
     @Override
     public String execute(TaskList tasks, UI ui, FileStorage f) throws AmogusException {
         String[] parts = desc.split(" ", 2);
@@ -32,12 +40,16 @@ public class TagCommand implements Command {
             System.out.println(e.getMessage());
             return e.getMessage();
         }
-        String msg = "Done! I've managed to tag your task: " + tasks.getTaskDesc(idx) + "\n";
+        String msg = "Done! I've managed to tag your task: " + tasks.get(idx).getDisplayString() + "\n";
         ui.showMsg(ui.format(msg));
         f.saveTasks(tasks);
         return msg;
     }
 
+    /**
+     * For the program to know when to exit the conversation with user.
+     * @return boolean
+     */
     @Override
     public boolean isExit() {
         return false;

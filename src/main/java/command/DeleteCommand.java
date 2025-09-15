@@ -29,7 +29,7 @@ public class DeleteCommand implements Command {
      */
     @Override
     public String execute(TaskList tasks, UI ui, FileStorage f) {
-        String msg = "Noted. I've removed this task:\n  " + tasks.getTaskDesc(idx) + "\n";
+        String msg = "Noted. I've removed this task:\n  " + tasks.get(idx).getDisplayString() + "\n";
         ui.showMsg(ui.format(msg));
         tasks.delete(idx);
         f.saveTasks(tasks);

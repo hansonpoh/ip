@@ -47,7 +47,7 @@ public class FileStorage {
      *
      * @return Tasks.TaskList with correctly loaded tasks from txt file
      * @throws AmogusException improper date/time format
-     * @throws IOException
+     * @throws IOException ioexception
      */
     public TaskList loadTasks() throws AmogusException, IOException {
         TaskList tasks = new TaskList();

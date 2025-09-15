@@ -43,7 +43,7 @@ public class AddEventCommand implements Command {
 
         Event event = new Event(descr, start, end);
 
-        String msg = "Got it. I've added this task:\n  " + event.toString() + "\nNow you have "
+        String msg = "Got it. I've added this task:\n  " + event.getDisplayString() + "\nNow you have "
                 + tasks.getSize() + " tasks in the list.\n";
         tasks.add(event);
         ui.showMsg(ui.format(msg));

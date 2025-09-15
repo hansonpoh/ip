@@ -36,7 +36,7 @@ public class AddToDoCommand implements Command {
         ToDo todo = new ToDo(desc);
         tasks.add(todo);
 
-        String msg = "Got it. I've added this task:\n  " + todo + "\nNow you have "
+        String msg = "Got it. I've added this task:\n  " + todo.getDisplayString() + "\nNow you have "
                 + tasks.getSize() + " tasks in the list.";
         ui.showMsg(ui.format(msg));
         f.saveTasks(tasks);

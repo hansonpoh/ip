@@ -2,7 +2,6 @@ package amogus;
 
 import java.util.Scanner;
 
-import javafx.stage.Stage;
 import tasks.TaskList;
 
 /**
@@ -29,6 +28,11 @@ public class UI {
         return msg;
     }
 
+    /**
+     * Formats given message in correct style.
+     * @param msg message to be formatted.
+     * @return formatted message.
+     */
     public String format(String msg) {
         return HORILINES + msg + HORILINES;
     }
@@ -46,7 +50,7 @@ public class UI {
 
         StringBuilder sb = new StringBuilder("Here are the tasks in your list:\n");
         for (int i = 0; i < tasks.getSize(); i++) {
-            sb.append(i + 1).append(". ").append(tasks.getTaskDesc(i)).append("\n");
+            sb.append(i + 1).append(". ").append(tasks.get(i).getDisplayString()).append("\n");
         }
         String msg = sb.toString();
         System.out.println(format(msg));

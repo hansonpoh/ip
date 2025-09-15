@@ -28,7 +28,26 @@ public class Deadlines extends Task {
     }
 
     /**
-     * @return String representation of Deadline task
+     * Returns the type of task.
+     * @return deadline type of task.
+     */
+    @Override
+    public String getType() {
+        return "D";
+    }
+
+    /**
+     * Correct display of task for easier understanding.
+     * @return display string of task.
+     */
+    @Override
+    public String getDisplayString() {
+        return "[" + getType() + "][" + (isDone() ? "X" : " ") + "] "
+                + getDescription() + " (by: " + byDate.toString() + ")" + getTag();
+    }
+
+    /**
+     * @return String representation of Deadline task.
      */
     @Override
     public String toString() {

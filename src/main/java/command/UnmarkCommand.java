@@ -30,7 +30,7 @@ public class UnmarkCommand implements Command {
     @Override
     public String execute(TaskList tasks, UI ui, FileStorage f) {
         tasks.unmark(idx);
-        String msg = "OK, I've marked this task as not done yet:\n  " + tasks.getTaskDesc(idx) + "\n";
+        String msg = "OK, I've marked this task as not done yet:\n  " + tasks.get(idx).getDisplayString() + "\n";
         ui.showMsg(ui.format(msg));
         f.saveTasks(tasks);
         return msg;

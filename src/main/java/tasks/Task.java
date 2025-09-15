@@ -34,6 +34,20 @@ public class Task {
     }
 
     /**
+     * @return description of task.
+     */
+    public String getDescription() {
+        return this.description;
+    }
+
+    /**
+     * @return boolean check of whether task is done.
+     */
+    public boolean isDone() {
+        return isDone;
+    }
+
+    /**
      * Marks task as complete.
      */
     public void mark() {
@@ -73,10 +87,27 @@ public class Task {
     }
 
     /**
+     * Returns the type of task.
+     * @return type of task.
+     */
+    public String getType() {
+        return " ";
+    }
+
+    /**
+     * Correct display of task for easier understanding.
+     * @return display string of task.
+     */
+    public String getDisplayString() {
+        String statusIcon = isDone ? "X" : " ";
+        return "[" + getType() + "][" + statusIcon + "] " + description + getTag();
+    }
+
+    /**
      * @return string representation of Task
      */
     public String toString() {
-        return this.getStatusIcon() + " | " + this.description;
+        return getType() + " | " + (isDone ? "1" : "0") + " | " + description + getTag();
     }
 
 }

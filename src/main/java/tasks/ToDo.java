@@ -8,9 +8,6 @@ import amogus.AmogusException;
  * Represents a ToDo object.
  */
 public class ToDo extends Task {
-
-    private String tag;
-
     /**
      * Creates the Tasks.ToDo object.
      *

@@ -13,7 +13,6 @@ public class Event extends Task {
 
     private final LocalDateTime startDate;
     private final LocalDateTime endDate;
-    private String tag;
 
     /**
      * Creates the Tasks.Event object.

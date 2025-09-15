@@ -12,7 +12,7 @@ import tasks.TaskList;
 public class Amogus {
 
     static final String NAME = "amogus";
-    private static final String PATH = "./data/Tasks.TaskList.txt";
+    private static final String FILE_PATH = "./data/Tasks.TaskList.txt";
 
     /**
      * Creates all necessary objects for interaction between each other,
@@ -22,7 +22,7 @@ public class Amogus {
     public static void chat() {
         UI ui = new UI();
         ui.welcome();
-        FileStorage fileStorage = new FileStorage(PATH);
+        FileStorage fileStorage = new FileStorage(FILE_PATH);
         TaskList tasks;
 
         try {

@@ -11,6 +11,10 @@ public class MarkCommand implements Command {
 
     private int idx;
 
+    /**
+     * Creates the command to mark a task.
+     * @param idx
+     */
     public MarkCommand(int idx) {
         this.idx = idx;
         assert idx >= 0 : "index cannot be negative";
@@ -25,8 +29,8 @@ public class MarkCommand implements Command {
      */
     @Override
     public String execute(TaskList tasks, UI ui, FileStorage f) {
-        String msg = "Nice! I've marked this task as done:\n  " + tasks.getTaskDesc(idx) + "\n";
         tasks.mark(idx);
+        String msg = "Nice! I've marked this task as done:\n  " + tasks.getTaskDesc(idx) + "\n";
         ui.showMsg(ui.format(msg));
         f.saveTasks(tasks);
         return msg;

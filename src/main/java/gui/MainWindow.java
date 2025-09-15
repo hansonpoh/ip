@@ -21,8 +21,9 @@ import tasks.TaskList;
  * Controller for the main GUI.
  */
 public class MainWindow extends AnchorPane {
-    private static final String PATH = "./data/Tasks.TaskList.txt";
-    private Amogus duke;
+    private static final String FILE_PATH = "./data/Tasks.TaskList.txt";
+    private Amogus amogus;
+    private UI ui = new UI();
     @FXML
     private ScrollPane scrollPane;
     @FXML
@@ -34,16 +35,23 @@ public class MainWindow extends AnchorPane {
 
 
     private Image userImage = new Image(this.getClass().getResourceAsStream("/images/DaUser.png"));
-    private Image dukeImage = new Image(this.getClass().getResourceAsStream("/images/DaDuke.png"));
+    private Image amogusImage = new Image(this.getClass().getResourceAsStream("/images/DaDuke.png"));
 
+    /**
+     * Gets chatbot to show welcome message when GUI is shown.
+     */
     @FXML
     public void initialize() {
         scrollPane.vvalueProperty().bind(dialogContainer.heightProperty());
+
+        dialogContainer.getChildren().add(
+                DialogBox.create(ui.welcome(), amogusImage, true)
+        );
     }
 
-    /** Injects the Duke instance */
-    public void setDuke(Amogus d) {
-        duke = d;
+    /** Injects the Amogus instance */
+    public void setAmogus(Amogus a) {
+        amogus = a;
     }
 
     /**
@@ -53,10 +61,8 @@ public class MainWindow extends AnchorPane {
     @FXML
     private void handleUserInput() throws AmogusException {
         String input = userInput.getText();
-        Parser parser = new Parser();
-        FileStorage fs = new FileStorage(PATH);
+        FileStorage fs = new FileStorage(FILE_PATH);
         TaskList tasks;
-        UI ui = new UI();
 
         try {
             tasks = fs.loadTasks();
@@ -65,12 +71,17 @@ public class MainWindow extends AnchorPane {
             tasks = new TaskList();
         }
 
-        Command command = Parser.parse(input);
+        String response;
+        try {
+            Command command = Parser.parse(input);
+            response = command.execute(tasks, ui, fs);
+        } catch (AmogusException e) {
+            response = "Oops! I'm not sure what your command is!";
+        }
 
-        String response = command.execute(tasks, ui, fs);
         dialogContainer.getChildren().addAll(
-                DialogBox.getUserDialog(input, userImage),
-                DialogBox.getDukeDialog(response, dukeImage)
+                DialogBox.create(input, userImage, false),
+                DialogBox.create(response, amogusImage, true)
         );
         userInput.clear();
     }

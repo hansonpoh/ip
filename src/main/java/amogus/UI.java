@@ -10,9 +10,13 @@ import tasks.TaskList;
  */
 public class UI {
 
-    static final String HORILINES = "____________________________________________________________\n";
+    static final String HORILINES = "________________________________________________________\n";
     static final String INTRO = "Hello! I'm " + Amogus.NAME + "!\nWhat can I do for you?\n";
     static final String OUTRO = "Bye. Hope to see you again soon!\n";
+    /* ChatGPT recommends a scanner object rather than instantiating one
+     * each time readcommand is called.
+     */
+    private final Scanner scanner = new Scanner(System.in);
 
     /**
      * Prints the message.
@@ -35,11 +39,15 @@ public class UI {
      * @param tasks list of tasks
      */
     public String showTaskList(TaskList tasks) {
-        String msg = "Here are the tasks in your list:\n";
+        /* ChatGPT recommended to use string builder instead of
+         * string concatenation to prevent intermediate string objects.
+         */
+
+        StringBuilder sb = new StringBuilder("Here are the tasks in your list:\n");
         for (int i = 0; i < tasks.getSize(); i++) {
-            int j = i + 1;
-            msg += j + ". " + tasks.getTaskDesc(i) + "\n";
+            sb.append(i + 1).append(". ").append(tasks.getTaskDesc(i)).append("\n");
         }
+        String msg = sb.toString();
         System.out.println(format(msg));
         return format(msg);
     }
@@ -50,8 +58,7 @@ public class UI {
      * @return full line of user input to be parsed
      */
     public String readCommand() {
-        Scanner s = new Scanner(System.in);
-        return s.nextLine();
+        return scanner.nextLine();
     }
 
     /**

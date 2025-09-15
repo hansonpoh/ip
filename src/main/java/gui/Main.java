@@ -23,7 +23,11 @@ public class Main extends Application {
             AnchorPane ap = fxmlLoader.load();
             Scene scene = new Scene(ap);
             stage.setScene(scene);
+            stage.setTitle("Amogus");
             fxmlLoader.<MainWindow>getController().setAmogus(amogus);
+            MainWindow mainWindow = fxmlLoader.getController();
+            mainWindow.setAmogus(amogus);
+            mainWindow.setStage(stage);
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();

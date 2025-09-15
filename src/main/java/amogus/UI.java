@@ -2,6 +2,7 @@ package amogus;
 
 import java.util.Scanner;
 
+import javafx.stage.Stage;
 import tasks.TaskList;
 
 /**

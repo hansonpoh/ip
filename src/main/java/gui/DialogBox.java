@@ -49,13 +49,22 @@ public class DialogBox extends HBox {
         setAlignment(Pos.TOP_LEFT);
     }
 
-    public static DialogBox getUserDialog(String s, Image i) {
-        return new DialogBox(s, i);
-    }
-
-    public static DialogBox getDukeDialog(String s, Image i) {
-        var db = new DialogBox(s, i);
-        db.flip();
+    /* ChatGPT recommended using this method rather than
+     * creating 2 different methods for user and chatbot.
+     */
+    /**
+     * Creates a dialog box on gui depending on whether
+     * it's the chatbot or the user.
+     * @param text user input or chatbot output
+     * @param img profile picture of user/chatbot
+     * @param isAmogus chatbot or not to flip
+     * @return relevant dialog box
+     */
+    public static DialogBox create(String text, Image img, boolean isAmogus) {
+        DialogBox db = new DialogBox(text, img);
+        if (isAmogus) {
+            db.flip();
+        }
         return db;
     }
 }

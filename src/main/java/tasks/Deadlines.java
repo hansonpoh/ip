@@ -10,11 +10,7 @@ import amogus.AmogusException;
  * Represents a Deadlines object.
  */
 public class Deadlines extends Task {
-
-    private final String by;
     private final LocalDateTime byDate;
-    private String tag;
-
     /**
      * Creates the Tasks.Deadlines object.
      *
@@ -27,7 +23,6 @@ public class Deadlines extends Task {
         if (Objects.equals(description, "") || Objects.equals(by, "")) {
             throw new AmogusException("Oh no! Please provide full information regarding your deadline!");
         }
-        this.by = by;
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d/M/yyyy HHmm");
         this.byDate = LocalDateTime.parse(by, formatter);
     }

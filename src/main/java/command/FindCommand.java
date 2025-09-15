@@ -12,6 +12,11 @@ public class FindCommand implements Command {
 
     private String wordToFind;
 
+    /**
+     * Creates the find command to search for tasks
+     * with given word.
+     * @param word word to be searched in tasks.
+     */
     public FindCommand(String word) {
         this.wordToFind = word;
         assert word != null : "unable to search for empty word";

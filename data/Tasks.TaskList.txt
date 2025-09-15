@@ -1,2 +1,0 @@
-T | 0 | borrow book | #hi
-T | 0 | borrow book | #hi

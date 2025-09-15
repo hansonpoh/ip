@@ -116,6 +116,7 @@ public class FileStorage {
                 throw new AmogusException("Invalid event time format");
             }
             task = new Event(parts[2], times[0], times[1]);
+            break;
         default:
             throw new AmogusException("Unknown task type: " + type);
         }

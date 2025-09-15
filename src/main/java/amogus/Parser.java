@@ -4,6 +4,7 @@ import command.AddDeadlineCommand;
 import command.AddEventCommand;
 import command.AddToDoCommand;
 import command.Command;
+import command.CommandType;
 import command.DeleteCommand;
 import command.ExitCommand;
 import command.FindCommand;
@@ -33,29 +34,31 @@ public class Parser {
         String commandWord = parts[0];
         String args = parts.length > 1 ? parts[1] : "";
 
-        switch (commandWord.toLowerCase()) {
-        case "list":
+        CommandType type = CommandType.fromString(commandWord);
+
+        switch (type) {
+        case LIST:
             return new ListCommand();
-        case "mark":
+        case MARK:
             int markIndex = Integer.parseInt(args) - 1;
             return new MarkCommand(markIndex);
-        case "unmark":
+        case UNMARK:
             int unmarkIndex = Integer.parseInt(args) - 1;
             return new UnmarkCommand(unmarkIndex);
-        case "delete":
+        case DELETE:
             int delIndex = Integer.parseInt(args) - 1;
             return new DeleteCommand(delIndex);
-        case "find":
+        case FIND:
             return new FindCommand(args);
-        case "tag":
+        case TAG:
             return new TagCommand(args);
-        case "todo":
+        case TODO:
             return new AddToDoCommand(args);
-        case "deadline":
+        case DEADLINE:
             return new AddDeadlineCommand(args);
-        case "event":
+        case EVENT:
             return new AddEventCommand(args);
-        case "bye":
+        case BYE:
             return new ExitCommand();
         default:
             throw new AmogusException("Unknown command: " + commandWord);

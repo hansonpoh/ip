@@ -7,7 +7,7 @@ import amogus.AmogusException;
  */
 public class Task {
 
-    private String description;
+    private final String description;
     private boolean isDone;
     private String tag;
     private boolean isTagged;
@@ -65,7 +65,7 @@ public class Task {
      * @return tag
      */
     public String getTag() {
-        if (this.tag == "") {
+        if (this.tag.isEmpty()) {
             return "";
         } else {
             return " | #" + this.tag;

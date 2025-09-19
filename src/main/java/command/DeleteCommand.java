@@ -9,15 +9,15 @@ import tasks.TaskList;
  */
 public class DeleteCommand implements Command {
 
-    private int idx;
+    private String idx;
 
     /**
      * Creates the delete command for deleting a task from list
      * @param idx index of task in the list
      */
-    public DeleteCommand(int idx) {
+    public DeleteCommand(String idx) {
         this.idx = idx;
-        assert idx >= 0 : "index cannot be negative";
+        assert idx != null : "please fill in the index.";
     }
 
     /**
@@ -29,15 +29,16 @@ public class DeleteCommand implements Command {
      */
     @Override
     public String execute(TaskList tasks, UI ui, FileStorage f) {
-        if (idx < 0 || idx >= tasks.getSize()) {
-            String errMsg = "Cannot delete task " + (idx + 1) + ": no such task.\n";
+        int idxx = Integer.parseInt(idx) - 1;
+        if (idxx < 0 || idxx >= tasks.getSize()) {
+            String errMsg = "Cannot delete task " + (idxx + 1) + ": no such task.";
             ui.showMsg(ui.format(errMsg));
             return errMsg;
         }
 
-        String msg = "Noted. I've removed this task:\n  " + tasks.get(idx).getDisplayString() + "\n";
+        String msg = "Noted. I've removed this task:\n  " + tasks.get(idxx).getDisplayString() + "\n";
         ui.showMsg(ui.format(msg));
-        tasks.delete(idx);
+        tasks.delete(idxx);
         f.saveTasks(tasks);
         return msg;
     }

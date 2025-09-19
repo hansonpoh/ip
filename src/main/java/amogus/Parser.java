@@ -40,14 +40,20 @@ public class Parser {
         case LIST:
             return new ListCommand();
         case MARK:
-            int markIndex = Integer.parseInt(args) - 1;
-            return new MarkCommand(markIndex);
+            if (args.isEmpty()) {
+                throw new AmogusException("Please enter mark index.");
+            }
+            return new MarkCommand(args);
         case UNMARK:
-            int unmarkIndex = Integer.parseInt(args) - 1;
-            return new UnmarkCommand(unmarkIndex);
+            if (args.isEmpty()) {
+                throw new AmogusException("Please enter unmark index.");
+            }
+            return new UnmarkCommand(args);
         case DELETE:
-            int delIndex = Integer.parseInt(args) - 1;
-            return new DeleteCommand(delIndex);
+            if (args.isEmpty()) {
+                throw new AmogusException("Please enter delete index.");
+            }
+            return new DeleteCommand(args);
         case FIND:
             return new FindCommand(args);
         case TAG:

@@ -9,15 +9,15 @@ import tasks.TaskList;
  */
 public class UnmarkCommand implements Command {
 
-    private int idx;
+    private String idx;
 
     /**
      * Creates the unmark command to unmark a given task
      * @param idx index of task in the task list.
      */
-    public UnmarkCommand(int idx) {
+    public UnmarkCommand(String idx) {
         this.idx = idx;
-        assert idx >= 0 : "index cannot be negative";
+        assert idx != null : "please fill in the index.";
     }
 
     /**
@@ -29,8 +29,14 @@ public class UnmarkCommand implements Command {
      */
     @Override
     public String execute(TaskList tasks, UI ui, FileStorage f) {
-        tasks.unmark(idx);
-        String msg = "OK, I've marked this task as not done yet:\n  " + tasks.get(idx).getDisplayString() + "\n";
+        int idxx = Integer.parseInt(idx) - 1;
+        if (idxx < 0 || idxx >= tasks.getSize()) {
+            String errMsg = "Cannot unmark task " + (idxx + 1) + ": no such task.";
+            ui.showMsg(ui.format(errMsg));
+            return errMsg;
+        }
+        tasks.unmark(idxx);
+        String msg = "OK, I've marked this task as not done yet:\n  " + tasks.get(idxx).getDisplayString() + "\n";
         ui.showMsg(ui.format(msg));
         f.saveTasks(tasks);
         return msg;

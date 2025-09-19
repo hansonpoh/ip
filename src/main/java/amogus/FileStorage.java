@@ -32,13 +32,16 @@ public class FileStorage {
      */
     public void saveTasks(TaskList tasks) {
         try {
-            File f = new File(path);
-            File parentDir = f.getParentFile();
+            File file = new File(path);
+            File parentDir = file.getParentFile();
             if (parentDir != null && !parentDir.exists()) {
                 parentDir.mkdirs();
             }
+            if (!file.exists()) {
+                file.createNewFile();
+            }
 
-            try (FileWriter fw = new FileWriter(path)) {
+            try (FileWriter fw = new FileWriter(file)) {
                 for (int i = 0; i < tasks.getSize(); i++) {
                     Task task = tasks.get(i);
                     fw.write(task.toString() + "\n");
@@ -115,15 +118,12 @@ public class FileStorage {
             task = new Deadlines(parts[2], parts[3]);
             break;
         case "E":
-            if (parts.length < 4) {
+            if (parts.length < 5) {
                 throw new AmogusException("Invalid event format");
             }
-            String[] times = parts[3].split("-", 2);
-            if (times.length < 2) {
-                throw new AmogusException("Invalid event time format");
-            }
-            task = new Event(parts[2], times[0], times[1]);
+            task = new Event(parts[2], parts[3], parts[4]);
             break;
+
         default:
             throw new AmogusException("Unknown task type: " + type);
         }

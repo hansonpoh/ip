@@ -42,10 +42,9 @@ public class AddEventCommand implements Command {
         assert end != null : "end date cannot be empty";
 
         Event event = new Event(descr, start, end);
-
+        tasks.add(event);
         String msg = "Got it. I've added this task:\n  " + event.getDisplayString() + "\nNow you have "
                 + tasks.getSize() + " tasks in the list.\n";
-        tasks.add(event);
         ui.showMsg(ui.format(msg));
         f.saveTasks(tasks);
         return msg;

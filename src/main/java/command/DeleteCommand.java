@@ -29,6 +29,12 @@ public class DeleteCommand implements Command {
      */
     @Override
     public String execute(TaskList tasks, UI ui, FileStorage f) {
+        if (idx < 0 || idx >= tasks.getSize()) {
+            String errMsg = "Cannot delete task " + (idx + 1) + ": no such task.\n";
+            ui.showMsg(ui.format(errMsg));
+            return errMsg;
+        }
+
         String msg = "Noted. I've removed this task:\n  " + tasks.get(idx).getDisplayString() + "\n";
         ui.showMsg(ui.format(msg));
         tasks.delete(idx);

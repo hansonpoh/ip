@@ -1,2 +1,0 @@
-T | 1 | borrow book | #IMPORTANT | #IMPORTANT
-T | 0 | borrow book

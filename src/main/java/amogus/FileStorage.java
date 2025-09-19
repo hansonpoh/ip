@@ -31,10 +31,18 @@ public class FileStorage {
      * @param tasks list of tasks
      */
     public void saveTasks(TaskList tasks) {
-        try (FileWriter fw = new FileWriter(path)) {
-            for (int i = 0; i < tasks.getSize(); i++) {
-                Task task = tasks.get(i);
-                fw.write(task.toString() + "\n");
+        try {
+            File f = new File(path);
+            File parentDir = f.getParentFile();
+            if (parentDir != null && !parentDir.exists()) {
+                parentDir.mkdirs();
+            }
+
+            try (FileWriter fw = new FileWriter(path)) {
+                for (int i = 0; i < tasks.getSize(); i++) {
+                    Task task = tasks.get(i);
+                    fw.write(task.toString() + "\n");
+                }
             }
         } catch (IOException e) {
             System.out.println("Error saving tasks: " + e.getMessage());
